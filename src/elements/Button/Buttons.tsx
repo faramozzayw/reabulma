@@ -8,7 +8,7 @@ export type ButtonsSizes = "small" | "medium" | "large";
 
 export interface ButtonsProps<T>
 	extends Bulma.Tag,
-		Bulma.Size,
+		/* Bulma.Size, */
 		Bulma.Alignment,
 		React.HTMLProps<T> {
 	hasAddons?: boolean;
@@ -16,12 +16,12 @@ export interface ButtonsProps<T>
 
 export const Buttons: React.FC<ButtonsProps<
 	HTMLButtonElement | HTMLAnchorElement
->> = ({ tag = "div", isSize, isAlign, hasAddons, ...props }) => {
+>> = ({ tag = "div", /* isSize, */ isAlign, hasAddons, ...props }) => {
 	const className = classnames(
 		"buttons",
 		{
 			"has-addons": hasAddons,
-			...getSizeModifiers({ isSize }),
+			/* ...getSizeModifiers({ isSize }), */
 			...getAlignmentModifiers({ isAlign }),
 		},
 		props.className,

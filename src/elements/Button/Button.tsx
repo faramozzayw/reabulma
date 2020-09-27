@@ -62,23 +62,23 @@ export const Button: ButtonType = ({
 		props.className,
 	);
 
-	const anchor = (
-		// eslint-disable-next-line jsx-a11y/anchor-has-content
-		<a
-			{...(props as React.HTMLProps<HTMLAnchorElement>)}
-			role="button"
-			className={className}
-			href={props?.href}
-		/>
-	);
+	if (props.href) {
+		return (
+			// eslint-disable-next-line jsx-a11y/anchor-has-content
+			<a
+				{...(props as React.HTMLProps<HTMLAnchorElement>)}
+				role="button"
+				className={className}
+				href={props.href}
+			/>
+		);
+	}
 
-	const button = (
+	return (
 		<button
 			{...(props as React.HTMLProps<HTMLButtonElement>)}
 			type={type ?? "button"}
 			className={className}
 		/>
 	);
-
-	return props.href ? anchor : button;
 };
