@@ -24,7 +24,7 @@ export const getLoadingModifiers = ({ isLoading }: Bulma.Loading) => {
 };
 
 export const getHeadingModifiers = ({
-	isSize: size = 1,
+	isSize: size,
 	isSpaced,
 }: Bulma.Heading) => {
 	const isSize = { [`is-${size}`]: true };

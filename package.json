@@ -1,9 +1,9 @@
 {
 	"name": "@faramo.zayw/reabulma",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A set of React Components for Bulma CSS",
-	"main": "dist/index.js",
-	"types": "dist/index.d.ts",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
 	"repository": "https://github.com/faramozzayw/reabulma.git",
 	"bugs": {
 		"url": "https://github.com/faramozzayw/reabulma/issues"
@@ -11,14 +11,18 @@
 	"homepage": "https://github.com/faramozzayw/reabulma#readme",
 	"author": "faramozzayw <faramo.zayw@gmail.com>",
 	"license": "MIT",
-	"private": true,
 	"scripts": {
 		"storybook": "start-storybook -p 6006",
 		"storybook:clean": "rm -rf ./node_modules/.cache/storybook",
 		"build-storybook": "build-storybook"
 	},
+	"files": [
+		"lib/"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"dependencies": {
-		"bulma": "^0.9.0",
 		"classnames": "^2.2.6"
 	},
 	"peerDependencies": {
@@ -27,6 +31,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.11.6",
+		"bulma": "^0.9.0",
 		"@storybook/addon-actions": "^6.0.22",
 		"@storybook/addon-controls": "^6.0.22",
 		"@storybook/addon-docs": "^6.0.22",
