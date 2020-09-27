@@ -4,21 +4,17 @@ import classnames from "classnames";
 import { Bulma } from "./../bulma";
 import { getColorModifiers, getSizeModifiers } from "../utils";
 
-export interface ProgressBar<T>
+export interface ProgressBar
 	extends Bulma.Size,
 		Bulma.Color,
-		React.HTMLProps<T> {
-	children?: React.ReactChild;
-	indeterminate?: boolean;
-}
+		React.HTMLProps<HTMLProgressElement> {}
 
-export const ProgressBar: React.FC<ProgressBar<HTMLProgressElement>> = ({
-	max,
+export const ProgressBar: React.FC<ProgressBar> = ({
+	max = "100",
 	children,
 	value,
 	isSize,
 	isColor,
-	indeterminate,
 	...props
 }) => {
 	const classNames = classnames(
@@ -30,7 +26,7 @@ export const ProgressBar: React.FC<ProgressBar<HTMLProgressElement>> = ({
 		props.className,
 	);
 
-	if (indeterminate) {
+	if (!value) {
 		return (
 			<progress className={classNames} max={max} {...props}>
 				{children}
