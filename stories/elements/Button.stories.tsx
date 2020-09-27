@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { Button } from "../src/index";
+import { Button } from "../../src/index";
 
-import type { ButtonType } from "../src/elements/Button/Button";
+import type { ButtonType } from "../../src/elements/Button/Button";
 
 export default {
 	title: "Example/Elements/Button",
