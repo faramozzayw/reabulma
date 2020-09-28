@@ -3,8 +3,6 @@ import type { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Content } from "../../src/index";
 
-// import type { Box as BoxProps } from "../../src/elements/box";
-
 export default {
 	title: "Example/Elements/Content",
 	component: Content,

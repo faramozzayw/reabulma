@@ -13,6 +13,8 @@ export { Title } from "./elements/title";
 export { Content } from "./elements/content";
 export { Notification } from "./elements/notification";
 export { ProgressBar } from "./elements/ProgressBar";
+export { Block } from "./elements/block";
+export { Tag } from "./elements/tag";
 
 // forms
 export { Control } from "./form/control";

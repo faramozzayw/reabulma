@@ -1,12 +1,34 @@
 import { Bulma } from "./bulma";
 
-export function getModifiersCreator<T>(key: string) {
-	return (props: { [key: string]: T | undefined }) => {
-		const modifier = props[key];
+type Modifier = { [k: string]: boolean };
+type Props<K> = { [key: string]: K };
 
-		return modifier ? { [`is-${modifier}`]: true } : {};
+/**
+ * The function returns a function for the modifier.
+ *
+ * @param {T} T - the type parameter that is used for the field type
+ * @param {string} key - field name
+ *
+ * # Example
+ * ```ts
+ * type Align = "left" | "centered" | "right";
+ * const getAlignmentModifiers = getModifiersCreator<Bulma.Align>("isAlign");
+ *
+ * // after creating a function it can be used like this
+ * const isAlign = getAlignFromSpace();
+ * getAlignmentModifiers({ isAlign });
+ * ```
+ *
+ */
+export function getModifiersCreator<T>(key: string) {
+	return (props: Props<Partial<T>>): Modifier => {
+		const modifier = props[key];
+		const hasModifier = Boolean(modifier);
+
+		return { [`is-${modifier}`]: hasModifier };
 	};
 }
+11;
 
 export const getColorModifiers = getModifiersCreator<Bulma.Colors>("isColor");
 export const getAlignmentModifiers = getModifiersCreator<Bulma.Align>(
@@ -15,12 +37,24 @@ export const getAlignmentModifiers = getModifiersCreator<Bulma.Align>(
 export const getSizeModifiers = getModifiersCreator<Bulma.Sizes>("isSize");
 export const getStateModifiers = getModifiersCreator<Bulma.States>("isState");
 
+export const getLightModifiers = ({ isLight }: Bulma.Light) => {
+	return { [`is-light`]: isLight };
+};
+
+export const getRoundedModifiers = ({ isRounded }: Bulma.Rounded) => {
+	return { [`is-rounded`]: isRounded };
+};
+
 export const getActiveModifiers = ({ isActive }: Bulma.Active) => {
-	return isActive ? { [`is-active`]: true } : {};
+	return { [`is-active`]: isActive };
 };
 
 export const getLoadingModifiers = ({ isLoading }: Bulma.Loading) => {
-	return isLoading ? { [`is-loading`]: true } : {};
+	return { [`is-loading`]: isLoading };
+};
+
+export const getLinkModifiers = ({ isLink }: Bulma.Link) => {
+	return { [`is-link`]: isLink };
 };
 
 export const getHeadingModifiers = ({
