@@ -1,3 +1,4 @@
+import "bulma/css/bulma.css";
 import { themes } from "@storybook/theming";
 
 export const parameters = {

@@ -1,5 +1,3 @@
-import "bulma/css/bulma.css";
-
 export type { Bulma } from "./bulma";
 
 // layout
