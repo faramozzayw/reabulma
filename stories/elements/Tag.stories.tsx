@@ -3,14 +3,12 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Tag, Block } from "../../src/index";
 
-import type { ButtonType } from "../../src/elements/Button/Button";
-
 export default {
 	title: "Example/Elements/Tag",
 	component: Tag,
 } as Meta;
 
-const Template: Story<ButtonType> = (args: any) => <Tag {...args}></Tag>;
+const Template: Story = (args: any) => <Tag {...args}></Tag>;
 
 export const Success = Template.bind({});
 Success.args = {
