@@ -8,7 +8,7 @@ export default {
 	component: Tabs,
 } as Meta;
 
-export const Default = (args: any) => (
+const Template: Story = (args: any) => (
 	<Tabs {...args}>
 		<ul>
 			<Tab isActive>
@@ -27,112 +27,29 @@ export const Default = (args: any) => (
 	</Tabs>
 );
 
-export const Alignment = (args: any) => (
-	<Tabs {...args}>
-		<ul>
-			<Tab isActive>
-				<a>Pictures</a>
-			</Tab>
-			<Tab>
-				<a>Music</a>
-			</Tab>
-			<Tab>
-				<a>Videos</a>
-			</Tab>
-			<Tab>
-				<a>Documents</a>
-			</Tab>
-		</ul>
-	</Tabs>
-);
+export const Default = Template.bind({});
+
+export const Alignment = Template.bind({});
 Alignment.args = {
 	isAlign: "centered",
 };
 
-export const Sizes = (args: any) => (
-	<Tabs {...args}>
-		<ul>
-			<Tab isActive>
-				<a>Pictures</a>
-			</Tab>
-			<Tab>
-				<a>Music</a>
-			</Tab>
-			<Tab>
-				<a>Videos</a>
-			</Tab>
-			<Tab>
-				<a>Documents</a>
-			</Tab>
-		</ul>
-	</Tabs>
-);
+export const Sizes = Template.bind({});
 Sizes.args = {
 	isSize: "small",
 };
 
-export const Borders = (args: any) => (
-	<Tabs {...args}>
-		<ul>
-			<Tab isActive>
-				<a>Pictures</a>
-			</Tab>
-			<Tab>
-				<a>Music</a>
-			</Tab>
-			<Tab>
-				<a>Videos</a>
-			</Tab>
-			<Tab>
-				<a>Documents</a>
-			</Tab>
-		</ul>
-	</Tabs>
-);
+export const Borders = Template.bind({});
 Borders.args = {
 	isBoxed: true,
 };
 
-export const Toggle = (args: any) => (
-	<Tabs {...args}>
-		<ul>
-			<Tab isActive>
-				<a>Pictures</a>
-			</Tab>
-			<Tab>
-				<a>Music</a>
-			</Tab>
-			<Tab>
-				<a>Videos</a>
-			</Tab>
-			<Tab>
-				<a>Documents</a>
-			</Tab>
-		</ul>
-	</Tabs>
-);
+export const Toggle = Template.bind({});
 Toggle.args = {
 	isToggle: true,
 };
 
-export const ToggleRounded = (args: any) => (
-	<Tabs {...args}>
-		<ul>
-			<Tab isActive>
-				<a>Pictures</a>
-			</Tab>
-			<Tab>
-				<a>Music</a>
-			</Tab>
-			<Tab>
-				<a>Videos</a>
-			</Tab>
-			<Tab>
-				<a>Documents</a>
-			</Tab>
-		</ul>
-	</Tabs>
-);
+export const ToggleRounded = Template.bind({});
 ToggleRounded.args = {
 	isToggle: true,
 	isToggleRounded: true,
