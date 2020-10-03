@@ -1,11 +1,11 @@
 export type { Bulma } from "./bulma";
 
 // layout
-export { Hero, HeroBody, HeroHeader, HeroFooter } from "./layout/Hero";
+export { Hero, HeroBody, HeroHeader, HeroFooter } from "./layout/Hero/index";
 export { Tile } from "./layout/Tile";
 
 // elements
-export { Button, Buttons } from "./elements/Button";
+export { Button, Buttons } from "./elements/Button/index";
 export { Box } from "./elements/box";
 export { Title } from "./elements/title";
 export { Content } from "./elements/content";
@@ -24,7 +24,12 @@ export { TextArea } from "./form/textarea";
 export { Help } from "./form/help";
 
 // components
-export { Panel, PanelHeading, PanelBlock, PanelIcon } from "./components/Panel";
+export {
+	Panel,
+	PanelHeading,
+	PanelBlock,
+	PanelIcon,
+} from "./components/Panel/index";
 export {
 	Navbar,
 	NavbarMenu,
@@ -36,17 +41,20 @@ export {
 	NavbarDropdown,
 	NavbarStart,
 	NavbarEnd,
-} from "./components/Navbar";
+} from "./components/Navbar/index";
 export {
 	Card,
 	CardContent,
 	CardFooter,
 	CardFooterItem,
-} from "./components/Card";
+} from "./components/Card/index";
 
 export {
 	Modal,
 	ModalBackground,
 	ModalContent,
 	ModalClose,
-} from "./components/Modal";
+} from "./components/Modal/index";
+
+export { Tabs } from "./components/Tabs/Tabs";
+export { Tab } from "./components/Tabs/Tab";

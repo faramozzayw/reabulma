@@ -4,26 +4,34 @@ import classnames from "classnames";
 import { Bulma } from "./../../bulma";
 import { getAlignmentModifiers, getSizeModifiers } from "./../../utils";
 
-export interface Tabs<T>
+export interface TabsProps<T>
 	extends Bulma.Alignment,
+		Bulma.FullWidth,
 		Bulma.Size,
 		Bulma.Tag,
 		React.HTMLProps<T> {
 	isBoxed?: boolean;
 	isToggle?: boolean;
+	isToggleRounded?: boolean;
 }
 
-export const Tabs: React.FC<Tabs<HTMLElement>> = ({
-	tag = "li",
+export const Tabs: React.FC<TabsProps<HTMLElement>> = ({
+	tag = "div",
 	isAlign,
 	isSize,
+	isBoxed,
+	isToggle,
+	isToggleRounded,
+	isFullWidth,
 	...props
 }) => {
 	const className = classnames(
 		"tabs",
 		{
-			"is-boxed": props.isBoxed,
-			"is-toggle": props.isToggle,
+			"is-boxed": isBoxed,
+			"is-toggle": isToggle,
+			"is-toggle-rounded": isToggleRounded,
+			"is-fullwidth": isFullWidth,
 			...getAlignmentModifiers({ isAlign }),
 			...getSizeModifiers({ isSize }),
 		},

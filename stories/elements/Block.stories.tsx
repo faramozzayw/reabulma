@@ -1,7 +1,7 @@
 import React from "react";
 import type { Story, Meta } from "@storybook/react/types-6-0";
 
-import { Block } from "../../src/index";
+import { Block, Notification } from "../../src/index";
 
 export default {
 	title: "Example/Elements/Block",

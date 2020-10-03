@@ -13,7 +13,6 @@
 	"license": "MIT",
 	"scripts": {
 		"storybook": "start-storybook -p 6006",
-		"storybook:clean": "rm -rf ./node_modules/.cache/storybook",
 		"build-storybook": "build-storybook"
 	},
 	"files": [
