@@ -44,6 +44,9 @@ export {
 } from "./components/Navbar/index";
 export {
 	Card,
+	CardHeader,
+	CardHeaderTitle,
+	CardImage,
 	CardContent,
 	CardFooter,
 	CardFooterItem,
