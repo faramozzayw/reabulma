@@ -1,11 +1,13 @@
 {
 	"compilerOptions": {
-		"module": "commonjs",
-		"target": "es2015",
+		"module": "es2020",
+		"target": "es2019",
 		"declaration": true,
 		"outDir": "./lib",
 		"jsx": "react",
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"skipLibCheck": true
 	},
-	"include": ["src/**/*"]
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "**/*.(spec|stories).(ts|tsx)"]
 }
