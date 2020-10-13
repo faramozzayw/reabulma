@@ -1,9 +1,9 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { Notification } from "../../src/index";
+import { Notification, Delete } from "../../src/index";
 
-import type { Notification as NotificationProps } from "../../src/elements/notification";
+import type { NotificationProps } from "../../src/elements/notification";
 
 export default {
 	title: "Example/Elements/Notification",
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<NotificationProps<HTMLElement>> = (args: any) => (
 	<Notification {...args}>
-		<button className="delete"></button>
+		<Delete />
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor.{" "}
 		<strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec
 		nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus

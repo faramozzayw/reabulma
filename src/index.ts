@@ -6,6 +6,7 @@ export { Tile } from "./layout/Tile";
 
 // elements
 export { Button, Buttons } from "./elements/Button/index";
+export { Table, TableContainer } from "./elements/Table/index";
 export { Box } from "./elements/box";
 export { Title } from "./elements/title";
 export { Content } from "./elements/content";
