@@ -36,6 +36,10 @@ export declare namespace Bulma {
 		isRounded?: boolean;
 	}
 
+	export interface Static {
+		isStatic?: boolean;
+	}
+
 	export interface Link {
 		isLink?: boolean;
 	}

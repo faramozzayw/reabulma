@@ -23,6 +23,7 @@ export { Control } from "./form/control";
 export { Label } from "./form/label";
 export { Select } from "./form/select";
 export { TextArea } from "./form/textarea";
+export { Input } from "./form/input";
 export { Help } from "./form/help";
 // forms / field
 export { Field } from "./form/field";

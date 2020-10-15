@@ -42,7 +42,7 @@ Disable.args = {
 export const Readonly = Template.bind({});
 Readonly.args = {
 	placeholder: "placeholder",
-	readonly: true,
+	readOnly: true,
 };
 
 export const FixedSize = Template.bind({});

@@ -10,39 +10,40 @@ import {
 	getStateModifiers,
 } from "../utils";
 
-export interface SelectProps<T = HTMLSelectElement>
+export interface InputProps<T = HTMLInputElement>
 	extends Bulma.Color,
 		Bulma.Size,
-		Bulma.Loading,
 		Bulma.State,
 		Bulma.Rounded,
+		Bulma.Static,
 		React.HTMLProps<T> {}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
 	(
-		{ isSize, isColor, isLoading, isRounded, isState, children, ...props },
+		{ isSize, isColor, isStatic, isRounded, isState, children, ...props },
 		ref,
 	) => {
-		const wrapperClassname = classnames(
-			"select",
+		const className = classnames(
+			"input",
 			{
 				"is-disabled": props.disabled,
 				"is-multiple": props.multiple,
-				...getStateModifiers({ isState }),
+				"is-static": isStatic,
 				...getRoundedModifiers({ isRounded }),
+				...getStateModifiers({ isState }),
 				...getColorModifiers({ isColor }),
 				...getSizeModifiers({ isSize }),
-				...getLoadingModifiers({ isLoading }),
 			},
 			props.className,
 		);
 
 		return (
-			<div className={wrapperClassname}>
-				<select {...(props as React.Props<HTMLSelectElement>)} ref={ref}>
-					{children}
-				</select>
-			</div>
+			<input
+				{...props}
+				className={className}
+				type={props.type ?? "text"}
+				ref={ref}
+			/>
 		);
 	},
 );
