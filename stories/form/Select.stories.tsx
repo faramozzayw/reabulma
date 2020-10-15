@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 
-import { Control, Field, Select, Label, Title } from "../../src/index";
+import { Control, Field, Select, Title } from "../../src/index";
 
 import type { SelectProps } from "../../src/form/select";
 
