@@ -21,7 +21,7 @@ export const Title: React.FC<Title<HTMLElement>> = ({
 		titleType,
 		{
 			...getHeadingModifiers({
-				isSize: isSize ? (isSubtitle ? 5 : 3) : undefined,
+				isSize: isSize ? isSize : isSubtitle ? 5 : 3,
 				isSpaced,
 			}),
 		},
