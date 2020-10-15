@@ -3,6 +3,7 @@ export type { Bulma } from "./bulma";
 // layout
 export { Hero, HeroBody, HeroHeader, HeroFooter } from "./layout/Hero/index";
 export { Tile } from "./layout/Tile";
+export { Container } from "./layout/container";
 
 // elements
 export { Button, Buttons } from "./elements/Button/index";
@@ -23,6 +24,9 @@ export { Label } from "./form/label";
 export { Select } from "./form/select";
 export { TextArea } from "./form/textarea";
 export { Help } from "./form/help";
+// forms / field
+export { Field } from "./form/field";
+export { FieldLabel } from "./form/FieldLabel";
 
 // components
 export {

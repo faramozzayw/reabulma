@@ -8,19 +8,22 @@ import {
 	getStateModifiers,
 } from "../utils";
 
-export interface TextArea<T>
+export interface TextAreaProps<T>
 	extends Bulma.Color,
 		Bulma.Size,
 		Bulma.State,
-		React.HTMLProps<T> {}
+		React.HTMLProps<T> {
+	hasFixedSize?: boolean;
+}
 
 export const TextArea = forwardRef<
 	HTMLTextAreaElement,
-	TextArea<HTMLTextAreaElement>
->(({ isSize, isState, isColor, ...props }, ref) => {
+	TextAreaProps<HTMLTextAreaElement>
+>(({ isSize, isState, isColor, hasFixedSize, ...props }, ref) => {
 	const className = classnames(
 		"textarea",
 		{
+			"has-fixed-size": hasFixedSize,
 			...getColorModifiers({ isColor }),
 			...getSizeModifiers({ isSize }),
 			...getStateModifiers({ isState }),
