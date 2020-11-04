@@ -1,0 +1,44 @@
+{{#unless react17}}
+import React from "react";
+{{/unless}}
+import classnames from "classnames";
+
+import { Bulma } from "../bulma";
+import {
+{{#each modifiers}}
+	{{#if this.hasFn}}
+    	get{{this.name}}Modifiers,
+	{{/if}}
+{{/each}}
+} from "../utils";
+
+export interface {{name}}Props<T> 
+	extends Bulma.Tag, 
+    {{#each modifiers}}
+		Bulma.{{this.name}},
+	{{/each}}
+    React.HTMLProps<T> {}
+
+export const {{name}}: React.FC<{{name}}Props<{{type}}>> = ({
+	tag = "{{defaultTag}}",
+	{{#each modifiers}}
+		is{{this.name}}{{#if this.defaultValue}} = {{defaultValue}}{{/if}},
+	{{/each}}
+	...props
+}) => {
+	const className = classnames(
+		"{{componentClassName}}",
+		{
+            {{#each modifiers}}
+    			{{#if this.hasFn}}
+                	...get{{this.name}}Modifiers({ is{{this.name}} }),
+                {{else}}
+                 	"{{this.className}}": is{{this.name}},
+                {{/if}}
+  			{{/each}}
+		},
+		props.className,
+	);
+
+	return React.createElement(tag, { ...props, className });
+};

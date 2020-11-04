@@ -1,0 +1,21 @@
+{
+	"react17": false,
+	"name": "Notification",
+	"componentClassName": "notification",
+	"defaultTag": "div",
+	"modifiers": [
+		{
+			"hasFn": true,
+			"name": "Color",
+			"className": "is-color"
+		},
+		{
+			"hasFn": true,
+			"name": "Rounded",
+			"className": "is-rounded"
+		},
+
+		{ "name": "Light", "className": "is-light" }
+	],
+	"type": "HTMLElement"
+}
