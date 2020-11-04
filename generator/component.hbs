@@ -22,7 +22,7 @@ export interface {{name}}Props<T>
 export const {{name}}: React.FC<{{name}}Props<{{type}}>> = ({
 	tag = "{{defaultTag}}",
 	{{#each modifiers}}
-		is{{this.name}}{{#if this.defaultValue}} = {{defaultValue}}{{/if}},
+		is{{this.name}},
 	{{/each}}
 	...props
 }) => {
