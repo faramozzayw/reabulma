@@ -1,10 +1,12 @@
-interface Modifier {
+import "./hbs";
+
+export interface Modifier {
 	readonly hasFn?: boolean;
 	readonly name: string;
 	readonly className: Pick<HTMLElement, "className">;
 }
 
-interface Component {
+export interface Component {
 	readonly react17?: boolean;
 	readonly name: string;
 	readonly componentClassName: string;
