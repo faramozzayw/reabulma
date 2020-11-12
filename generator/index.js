@@ -1,19 +1,77 @@
 "use strict";
 exports.__esModule = true;
 exports.generate = void 0;
-var Handlebars = require("handlebars");
 var fs = require("fs");
-var json = require("./testData.json");
-var t =
-	'\n    {{#unless react17}}\n    import React from "react";\n    {{/unless}}\n    import classnames from "classnames";\n    \n    import { Bulma } from "bulmaTypes";\n    import {\n    {{#each modifiers}}\n    \t{{#if this.hasFn}}\n        \tget{{this.name}}Modifiers,\n    \t{{/if}}\n    {{/each}}\n    } from "utils";\n    \n    export interface {{name}}Props<T> \n    \textends Bulma.Tag, \n        {{#each modifiers}}\n    \t\tBulma.{{this.name}},\n    \t{{/each}}\n        React.HTMLProps<T> {}\n    \n    export const {{name}}: React.FC<{{name}}Props<{{type}}>> = ({\n    \ttag = "{{defaultTag}}",\n    \t{{#each modifiers}}\n    \t\tis{{this.name}},\n    \t{{/each}}\n    \t...props\n    }) => {\n    \tconst className = classnames(\n    \t\t"{{componentClassName}}",\n    \t\t{\n                {{#each modifiers}}\n        \t\t\t{{#if this.hasFn}}\n                    \t...get{{this.name}}Modifiers({ is{{this.name}} }),\n                    {{else}}\n                     \t"{{this.className}}": is{{this.name}},\n                    {{/if}}\n      \t\t\t{{/each}}\n    \t\t},\n    \t\tprops.className,\n    \t);\n        \n    \treturn React.createElement(tag, { ...props, className });\n    };\n';
+var testData_1 = require("./testData");
+var Handlebars = require("handlebars");
+var template = require("./component.hbs");
+var outputDir = "./output/";
+var extension = ".tsx";
+Handlebars.registerHelper("field", function (options) {
+	return Object.values(options)
+		.filter(function (v) {
+			return v.interface;
+		})
+		.map(function (v) {
+			return Object.entries(v.interface);
+		})
+		.map(function (v) {
+			var _a = v[0],
+				key = _a[0],
+				field = _a[1];
+			return { key: key, field: field };
+		})
+		.reduce(function (acc, current) {
+			var _a;
+			return acc.concat(
+				"" +
+					current.key +
+					((
+						(_a = current.field) === null || _a === void 0
+							? void 0
+							: _a.optional
+					)
+						? "?"
+						: "") +
+					": " +
+					current.field.type +
+					";",
+			);
+		}, [])
+		.join("\n");
+});
+Handlebars.registerHelper("utils", function (options) {
+	var interfaces = Object.values(options)
+		.filter(function (v) {
+			return v.hasFn;
+		})
+		.map(function (v) {
+			return "get" + v.name + "Modifiers";
+		})
+		.join(", ");
+	if (interfaces.length) {
+		return "import { " + interfaces + ' } from "utils";';
+	}
+	return null;
+});
 exports.generate = function (meta) {
-	var gener = Handlebars.compile(t);
-	var content = gener(meta);
+	var content = template(meta);
 	var componentName = meta.name;
-	fs.writeFile("./output/" + componentName + ".tsx", content, function (err) {
+	var componentDir = outputDir + meta.to;
+	try {
+		fs.accessSync(componentDir, fs.constants.F_OK);
+	} catch (err) {
+		fs.mkdirSync(componentDir);
+	}
+	fs.writeFile(componentDir + componentName + extension, content, function (
+		err,
+	) {
 		if (err) return console.log(err);
 		console.info("Component '" + componentName + "' successfully created");
 	});
 	return content;
 };
-exports.generate(json);
+for (var _i = 0, json_1 = testData_1["default"]; _i < json_1.length; _i++) {
+	var component = json_1[_i];
+	exports.generate(component);
+}

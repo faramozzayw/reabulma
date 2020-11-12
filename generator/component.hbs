@@ -3,42 +3,40 @@ import React from "react";
 {{/unless}}
 import classnames from "classnames";
 
-import { Bulma } from "../bulma";
-import {
-{{#each modifiers}}
-	{{#if this.hasFn}}
-    	get{{this.name}}Modifiers,
-	{{/if}}
-{{/each}}
-} from "../utils";
+import { Bulma } from "bulmaTypes";
+{{#utils modifiers}}{{/utils}}
 
 export interface {{name}}Props<T> 
 	extends Bulma.Tag, 
     {{#each modifiers}}
-		Bulma.{{this.name}},
+		{{#unless this.interface}}
+        Bulma.{{this.name}},
+        {{/unless}}
 	{{/each}}
-    React.HTMLProps<T> {}
+        React.HTMLProps<T> {
+    {{#field modifiers}}{{/field}}
+}
 
 export const {{name}}: React.FC<{{name}}Props<{{type}}>> = ({
 	tag = "{{defaultTag}}",
-	{{#each modifiers}}
-		is{{this.name}},
-	{{/each}}
+{{#each modifiers}}
+	is{{this.name}},
+{{/each}}
 	...props
 }) => {
 	const className = classnames(
 		"{{componentClassName}}",
 		{
-            {{#each modifiers}}
-    			{{#if this.hasFn}}
-                	...get{{this.name}}Modifiers({ is{{this.name}} }),
-                {{else}}
-                 	"{{this.className}}": is{{this.name}},
-                {{/if}}
-  			{{/each}}
+    {{#each modifiers}}
+    	{{#if this.hasFn}}
+        	...get{{this.name}}Modifiers({ is{{this.name}} }),
+        {{else}}
+         	"{{this.className}}": is{{this.name}},
+        {{/if}}
+    {{/each}}
 		},
 		props.className,
 	);
-
+    
 	return React.createElement(tag, { ...props, className });
 };

@@ -1,65 +1,59 @@
-import * as Handlebars from "handlebars";
 import * as fs from "fs";
+import { Generator } from "./hbs";
+import json from "./testData";
 
-// import * as template from "./component.hbs";
-import { Component } from "./types";
+const Handlebars = require("handlebars");
+const template = require("./component.hbs");
 
-import * as json from "./testData.json";
+const outputDir = "./output/";
+const extension = ".tsx";
 
-const t = `
-    {{#unless react17}}
-    import React from "react";
-    {{/unless}}
-    import classnames from "classnames";
-    
-    import { Bulma } from "bulmaTypes";
-    import {
-    {{#each modifiers}}
-    	{{#if this.hasFn}}
-        	get{{this.name}}Modifiers,
-    	{{/if}}
-    {{/each}}
-    } from "utils";
-    
-    export interface {{name}}Props<T> 
-    	extends Bulma.Tag, 
-        {{#each modifiers}}
-    		Bulma.{{this.name}},
-    	{{/each}}
-        React.HTMLProps<T> {}
-    
-    export const {{name}}: React.FC<{{name}}Props<{{type}}>> = ({
-    	tag = "{{defaultTag}}",
-    	{{#each modifiers}}
-    		is{{this.name}},
-    	{{/each}}
-    	...props
-    }) => {
-    	const className = classnames(
-    		"{{componentClassName}}",
-    		{
-                {{#each modifiers}}
-        			{{#if this.hasFn}}
-                    	...get{{this.name}}Modifiers({ is{{this.name}} }),
-                    {{else}}
-                     	"{{this.className}}": is{{this.name}},
-                    {{/if}}
-      			{{/each}}
-    		},
-    		props.className,
-    	);
-        
-    	return React.createElement(tag, { ...props, className });
-    };
-`;
+Handlebars.registerHelper("field", (options: Generator.ModifierOptions) => {
+	return Object.values(options)
+		.filter((v) => v.interface)
+		.map((v) => Object.entries(v.interface))
+		.map((v) => {
+			const [key, field] = v[0];
+			return { key, field };
+		})
+		.reduce(
+			(acc, current) =>
+				acc.concat(
+					`${current.key}${current.field?.optional ? "?" : ""}: ${
+						current.field.type
+					};`,
+				),
+			[],
+		)
+		.join("\n");
+});
 
-export const generate = (meta: Object) => {
-	const gener = Handlebars.compile(t);
-	const content = gener(meta);
+Handlebars.registerHelper("utils", (options: Generator.ModifierOptions) => {
+	const interfaces = Object.values(options)
+		.filter((v) => v.hasFn)
+		.map((v) => `get${v.name}Modifiers`)
+		.join(", ");
 
-	const componentName = (meta as Component).name;
+	if (interfaces.length) {
+		return `import { ${interfaces} } from "utils";`;
+	}
 
-	fs.writeFile(`./output/${componentName}.tsx`, content, (err) => {
+	return null;
+});
+
+export const generate = (meta: Generator.Component) => {
+	const content = template(meta);
+
+	const componentName = meta.name;
+	const componentDir = outputDir + meta.to;
+
+	try {
+		fs.accessSync(componentDir, fs.constants.F_OK);
+	} catch (err) {
+		fs.mkdirSync(componentDir);
+	}
+
+	fs.writeFile(componentDir + componentName + extension, content, (err) => {
 		if (err) return console.log(err);
 
 		console.info(`Component '${componentName}' successfully created`);
@@ -68,4 +62,6 @@ export const generate = (meta: Object) => {
 	return content;
 };
 
-generate(json);
+for (const component of json) {
+	generate(component);
+}
