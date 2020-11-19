@@ -5,12 +5,12 @@ import { Bulma } from "../bulma";
 
 export interface FieldProps<T = HTMLElement>
 	extends Bulma.Tag,
+		Bulma.Alignment,
 		React.HTMLProps<T> {
 	isHorizontal?: boolean;
 	isGrouped?: boolean;
 	multiline?: boolean;
 	hasAddons?: boolean;
-	direction?: "left" | "centered" | "right";
 }
 
 export const Field: React.FC<FieldProps> = ({
@@ -18,8 +18,8 @@ export const Field: React.FC<FieldProps> = ({
 	isHorizontal,
 	isGrouped,
 	multiline,
+	isAlign,
 	hasAddons,
-	direction,
 	...props
 }) => {
 	const className = classnames(
@@ -29,8 +29,8 @@ export const Field: React.FC<FieldProps> = ({
 			"is-grouped": isGrouped,
 			"is-grouped-multiline": isGrouped && multiline,
 			"has-addons": hasAddons,
-			[`has-addons-${direction}`]: hasAddons,
-			[`is-grouped-${direction}`]: isGrouped,
+			[`has-addons-${isAlign}`]: hasAddons,
+			[`is-grouped-${isAlign}`]: isGrouped,
 		},
 		props.className,
 	);
