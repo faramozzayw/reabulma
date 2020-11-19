@@ -17,6 +17,7 @@ export { Block } from "./elements/block";
 export { Tag } from "./elements/tag";
 export { Image } from "./elements/image";
 export { Delete } from "./elements/delete";
+export { Icon } from "./elements/icon";
 
 // forms
 export { Control } from "./form/control";
