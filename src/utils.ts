@@ -1,8 +1,8 @@
 import { Bulma } from "./bulma";
 
-type Modifier = { [k: string]: boolean };
-type Props<K> = { [key: string]: K };
-type ModifierFunction = (props: Props<any>) => Modifier;
+export type Modifier = { [k: string]: boolean };
+export type Props<K> = { [key: string]: K };
+export type ModifierFunction = (props: Props<any>) => Modifier;
 
 export function combineModifiers(
 	props: Props<any>,
