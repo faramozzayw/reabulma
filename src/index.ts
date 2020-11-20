@@ -5,6 +5,10 @@ export { Hero, HeroBody, HeroHeader, HeroFooter } from "./layout/Hero/index";
 export { Tile } from "./layout/Tile";
 export { Container } from "./layout/container";
 
+// columns
+export { Columns } from "./columns/columns";
+export { Column } from "./columns/column";
+
 // elements
 export { Button, Buttons } from "./elements/Button/index";
 export { Table, TableContainer } from "./elements/Table/index";
