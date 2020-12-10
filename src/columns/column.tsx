@@ -6,25 +6,21 @@ import { getSizeModifiers } from "./utils";
 
 export interface ColumnProps<T = HTMLElement>
 	extends Bulma.Tag,
-		//Bulma.FullWidth,
 		Bulma.Columns.Size,
-		React.HTMLProps<T> {
-	isNarrow?: boolean;
-}
+		Bulma.Columns.Offset,
+		React.HTMLProps<T> {}
 
 export const Column: React.FC<ColumnProps> = ({
 	tag = "div",
-	isNarrow,
-	//isFullWidth,
+	isOffset,
 	isSize,
 	...props
 }) => {
 	const className = classnames(
 		"column",
 		{
-			"is-narrow": isNarrow,
-			//"is-full": isFullWidth,
 			...getSizeModifiers({ isSize: isSize as Bulma.Columns.Size }),
+			...getSizeModifiers({ isSize: isOffset, isOffset: true }),
 		},
 		props.className,
 	);

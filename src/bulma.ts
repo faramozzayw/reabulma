@@ -1,4 +1,4 @@
-import { fractions } from "./columns/utils";
+import { fractions, width } from "./columns/utils";
 
 export declare namespace Bulma {
 	export type Colors =
@@ -136,6 +136,7 @@ export declare namespace Bulma {
 			| "12";
 
 		export type Fractions = keyof typeof fractions;
+		export type Width = keyof typeof width;
 
 		type AllSizes = RegularSizes | StringSizes | Fractions;
 
@@ -149,8 +150,14 @@ export declare namespace Bulma {
 
 		export type Platforms = keyof SizeObject;
 
-		export interface Size {
+		export interface AbstructSize {}
+
+		export interface Size extends AbstructSize {
 			isSize?: AllSizes | SizeObject;
+		}
+
+		export interface Offset extends AbstructSize {
+			isOffset?: AllSizes | SizeObject;
 		}
 	}
 }

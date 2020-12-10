@@ -20,7 +20,6 @@ interface TemplateProps {
 }
 
 const defaultColumnProps: ColumnProps = {
-	isNarrow: false,
 	isSize: "1/2",
 };
 
@@ -45,6 +44,7 @@ const defaultProps: TemplateProps = {
 				mobile: "full",
 				desktop: "1/4",
 			},
+			isOffset: "3/4",
 		},
 	],
 };

@@ -9,10 +9,24 @@ export const fractions = {
 	"1/4": "one-quarter",
 	// prettier-ignore
 	"full": "full",
+	// prettier-ignore
+	"narrow": "narrow",
 	"4/5": "four-fifths",
 	"3/5": "three-fifths",
 	"2/5": "two-fifths",
 	"1/5": "one-fifth",
+};
+
+export const width = {
+	// prettier-ignore
+	"full": "full",
+	// prettier-ignore
+	"narrow": "narrow",
+};
+
+export const sizes = {
+	...fractions,
+	...width,
 };
 
 interface SomeSizeArg<T = unknown> {
@@ -39,6 +53,7 @@ export function getSomeSizeModifiers<T>({
 
 export const getGridObjectSizeModifiers = ({
 	isSize,
+	isOffset,
 }: SomeSizeArg<Bulma.Columns.Size>): Modifier => {
 	let resultSize = {};
 
@@ -46,6 +61,7 @@ export const getGridObjectSizeModifiers = ({
 		resultSize = {
 			...resultSize,
 			...getSizeModifiers({
+				isOffset,
 				isSize: size,
 				platform:
 					platform === "default"
@@ -60,19 +76,26 @@ export const getGridObjectSizeModifiers = ({
 
 export const getSizeModifiers = ({
 	isSize,
+	isOffset,
 	platform,
-}: SomeSizeArg<Bulma.Columns.Size>): Modifier => {
+}: SomeSizeArg<Bulma.Columns.AbstructSize>): Modifier => {
 	if (!isSize) return {};
 
-	if (typeof isSize === "object") return getGridObjectSizeModifiers({ isSize });
+	if (typeof isSize === "object")
+		return getGridObjectSizeModifiers({ isSize, isOffset });
 
 	if (typeof isSize === "number" || !Number.isNaN(Number(isSize))) {
-		return getSomeSizeModifiers<number>({ platform, isSize: isSize as number });
+		return getSomeSizeModifiers<number>({
+			platform,
+			isOffset,
+			isSize: isSize as number,
+		});
 	}
 
 	return getSomeSizeModifiers<Bulma.Columns.Fractions>({
 		platform,
+		isOffset,
 		isSize: isSize as Bulma.Columns.Fractions,
-		from: fractions,
+		from: sizes,
 	});
 };
