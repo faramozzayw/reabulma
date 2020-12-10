@@ -138,7 +138,7 @@ export declare namespace Bulma {
 		export type Fractions = keyof typeof fractions;
 		export type Width = keyof typeof width;
 
-		type AllSizes = RegularSizes | StringSizes | Fractions;
+		type AllSizes = RegularSizes | StringSizes | Fractions | Width;
 
 		export interface SizeObject {
 			mobile?: AllSizes;
@@ -157,7 +157,7 @@ export declare namespace Bulma {
 		}
 
 		export interface Offset extends AbstructSize {
-			isOffset?: AllSizes | SizeObject;
+			isOffset?: RegularSizes | StringSizes | Fractions | SizeObject;
 		}
 	}
 }

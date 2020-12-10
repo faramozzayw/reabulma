@@ -7,10 +7,6 @@ export const fractions = {
 	"1/2": "half",
 	"1/3": "one-third",
 	"1/4": "one-quarter",
-	// prettier-ignore
-	"full": "full",
-	// prettier-ignore
-	"narrow": "narrow",
 	"4/5": "four-fifths",
 	"3/5": "three-fifths",
 	"2/5": "two-fifths",
