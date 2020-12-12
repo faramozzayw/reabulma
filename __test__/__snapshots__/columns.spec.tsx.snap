@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test <Columns /> renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="columns"
+    >
+      <div
+        class="column is-half"
+      >
+        first column
+      </div>
+      <div
+        class="column is-narrow"
+      >
+        second column
+      </div>
+    </div>
+  </div>
+</body>
+`;
