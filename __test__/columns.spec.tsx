@@ -104,4 +104,81 @@ describe("test <Columns />", () => {
 		expect(getByText(/2/i)).toHaveClass("column is-four-fifths");
 		expect(getByText(/3/i)).toHaveClass("column is-two-fifths-tablet");
 	});
+
+	it("`isSize` prop works correctly for numeric values", () => {
+		const { getByText } = render(
+			<Columns>
+				<Column isSize={1}>first column</Column>
+				<Column isSize={7}>second column</Column>
+			</Columns>,
+		);
+
+		expect(getByText(/first/i)).toHaveClass("column is-1");
+		expect(getByText(/second/i)).toHaveClass("column is-7");
+	});
+
+	it("`isOffset` prop works correctly for text values", () => {
+		const { getByText } = render(
+			<Columns>
+				<Column isOffset="1">1 column</Column>
+				<Column isOffset="3">2 column</Column>
+				<Column isOffset="7">3 column</Column>
+			</Columns>,
+		);
+
+		expect(getByText(/1/i)).toHaveClass("column is-offset-1");
+		expect(getByText(/2/i)).toHaveClass("column is-offset-3");
+		expect(getByText(/3/i)).toHaveClass("column is-offset-7");
+	});
+
+	it("`isOffset` prop works correctly for fractions", () => {
+		const { getByText } = render(
+			<Columns>
+				<Column isOffset="1/4">1 column</Column>
+				<Column isOffset="4/5">2 column</Column>
+				<Column isOffset="2/3">3 column</Column>
+				<Column isOffset="2/5">4 column</Column>
+			</Columns>,
+		);
+
+		expect(getByText(/1/i)).toHaveClass("column is-offset-one-quarter");
+		expect(getByText(/2/i)).toHaveClass("column is-offset-four-fifths");
+		expect(getByText(/3/i)).toHaveClass("column is-offset-two-thirds");
+		expect(getByText(/4/i)).toHaveClass("column is-offset-two-fifths");
+	});
+
+	it("`isOffset` prop works correctly with the specified platform", () => {
+		const { getByText } = render(
+			<Columns>
+				<Column
+					isOffset={{
+						mobile: "full",
+						desktop: "1/2",
+					}}
+				>
+					1 column
+				</Column>
+				<Column
+					isOffset={{
+						default: "4/5",
+					}}
+				>
+					2 column
+				</Column>
+				<Column
+					isOffset={{
+						tablet: "2/5",
+					}}
+				>
+					3 column
+				</Column>
+			</Columns>,
+		);
+
+		expect(getByText(/1/i)).toHaveClass(
+			"column is-offset-full-mobile is-offset-half-desktop",
+		);
+		expect(getByText(/2/i)).toHaveClass("column is-offset-four-fifths");
+		expect(getByText(/3/i)).toHaveClass("column is-offset-two-fifths-tablet");
+	});
 });
