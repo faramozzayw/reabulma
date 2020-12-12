@@ -1,5 +1,3 @@
-import { fractions, width } from "./columns/utils";
-
 export declare namespace Bulma {
 	export type Colors =
 		| "white"
@@ -117,47 +115,5 @@ export declare namespace Bulma {
 
 	export interface FullWidth {
 		isFullWidth?: boolean;
-	}
-
-	export namespace Columns {
-		export type RegularSizes = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-		export type StringSizes =
-			| "1"
-			| "2"
-			| "3"
-			| "4"
-			| "5"
-			| "6"
-			| "7"
-			| "8"
-			| "9"
-			| "10"
-			| "11"
-			| "12";
-
-		export type Fractions = keyof typeof fractions;
-		export type Width = keyof typeof width;
-
-		type AllSizes = RegularSizes | StringSizes | Fractions | Width;
-
-		export interface SizeObject {
-			mobile?: AllSizes;
-			tablet?: AllSizes;
-			desktop?: AllSizes;
-			widescreen?: AllSizes;
-			default?: AllSizes;
-		}
-
-		export type Platforms = keyof SizeObject;
-
-		export interface AbstructSize {}
-
-		export interface Size extends AbstructSize {
-			isSize?: AllSizes | SizeObject;
-		}
-
-		export interface Offset extends AbstructSize {
-			isOffset?: RegularSizes | StringSizes | Fractions | SizeObject;
-		}
 	}
 }
