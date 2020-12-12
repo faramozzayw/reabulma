@@ -1,9 +1,13 @@
 {
 	"name": "@faramo.zayw/reabulma",
-	"version": "0.0.4-2",
+	"version": "0.0.6",
 	"description": "A set of React Components for Bulma CSS",
 	"main": "./lib/index.js",
 	"types": "./lib/index.d.ts",
+	"keywords": [
+		"bulma",
+		"react"
+	],
 	"repository": "https://github.com/faramozzayw/reabulma.git",
 	"bugs": {
 		"url": "https://github.com/faramozzayw/reabulma/issues"

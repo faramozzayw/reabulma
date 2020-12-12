@@ -24,3 +24,18 @@ Using yarn
 ```sh
 yarn add @faramo.zayw/reabulma
 ```
+
+## Usage
+
+```jsx
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { Container, Title } from "bloomer";
+
+ReactDOM.render(
+	<Container>
+		<Title isSize="4">Hello World!</Title>
+	</Container>,
+	document.getElementById("root"),
+);
+```
