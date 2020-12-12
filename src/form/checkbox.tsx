@@ -5,7 +5,7 @@ export interface CheckboxProps<T = HTMLInputElement>
 	extends React.HTMLProps<T> {}
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-	({ children, ...props }) => {
+	({ children, ...props }, ref) => {
 		const wrapperClassNames = classnames("checkbox", props.className);
 
 		return (
@@ -14,7 +14,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 				// @ts-ignore
 				disabled={props.disabled}
 			>
-				<input type="checkbox" {...props} />
+				<input type="checkbox" {...props} ref={ref} />
 				{children}
 			</label>
 		);
