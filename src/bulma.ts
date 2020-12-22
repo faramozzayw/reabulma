@@ -1,6 +1,8 @@
 import { fractions, width } from "./columns/utils";
 
 export declare namespace Bulma {
+	type Theme = "light" | "dark";
+
 	export type Colors =
 		| "white"
 		| "light"
@@ -12,6 +14,17 @@ export declare namespace Bulma {
 		| "warning"
 		| "danger"
 		| "text";
+
+	export type GrayColors =
+		| "black-bis"
+		| "black-ter"
+		| "grey-darker"
+		| "grey-dark"
+		| "grey"
+		| "grey-light"
+		| "grey-lighter"
+		| "white-ter"
+		| "white-bis";
 
 	export interface Color {
 		isColor?: Colors;
@@ -159,5 +172,86 @@ export declare namespace Bulma {
 		export interface Offset extends AbstructSize {
 			isOffset?: RegularSizes | StringSizes | Fractions | SizeObject;
 		}
+	}
+
+	export namespace Helpers {
+		export type JustifyContent =
+			| "flex-start"
+			| "flex-end"
+			| "center"
+			| "space-between"
+			| "space-around"
+			| "space-evenly"
+			| "start"
+			| "end"
+			| "left"
+			| "right";
+
+		export type AlignContent =
+			| "flex-start"
+			| "flex-end"
+			| "center"
+			| "space-between"
+			| "space-around"
+			| "space-evenly"
+			| "start"
+			| "end"
+			| "stretch"
+			| "baseline";
+
+		export type AlignItems =
+			| "stretch"
+			| "flex-start"
+			| "flex-end"
+			| "center"
+			| "baseline"
+			| "start"
+			| "end"
+			| "self-start"
+			| "self-end";
+
+		export type FlexWrap = "nowrap" | "wrap" | "wrap-reverse";
+		export type FlexDirection =
+			| "row"
+			| "row-reverse"
+			| "column"
+			| "column-reverse";
+
+		export interface Flexbox {
+			alignContent?: AlignContent;
+			alignItems?: AlignItems;
+			justifyContent?: JustifyContent;
+			grow?: 1 | 2 | 3 | 4 | 5 | 6;
+			shrink?: 1 | 2 | 3 | 4 | 5 | 6;
+			wrap?: FlexWrap;
+			direction?: FlexDirection;
+		}
+
+		export type Family =
+			| "sans-serif"
+			| "monospace"
+			| "primary"
+			| "secondary"
+			| "code";
+		export type TextWeight =
+			| "light"
+			| "normal"
+			| "medium"
+			| "semibold"
+			| "bold";
+		export type TextTransformation =
+			| "capitalized"
+			| "lowercase"
+			| "uppercase"
+			| "italic";
+
+		export type AllColor =
+			| Colors
+			| `has-text-${Colors}-${Theme}`
+			| `has-text-${GrayColors}`;
+
+		export type BackgroundColor =
+			| `has-background-${Colors}-${Theme}`
+			| `has-background-${GrayColors}`;
 	}
 }
