@@ -175,6 +175,10 @@ export declare namespace Bulma {
 	}
 
 	export namespace Helpers {
+		export interface AllHelpers {
+			flexbox?: Flexbox;
+		}
+
 		export type JustifyContent =
 			| "flex-start"
 			| "flex-end"

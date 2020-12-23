@@ -134,9 +134,9 @@ export const getWrapModifiers = getModifiersCreator<
 });
 
 export const getFlexboxModifiers = (flexbox: Bulma.Helpers.Flexbox) => ({
-	...getAlignContentModifiers({ alignContent: flexbox.alignContent }),
-	...getAlignItemsModifiers({ alignItems: flexbox.alignItems }),
-	...getJustifyContentModifiers({ justifyContent: flexbox.justifyContent }),
-	...getWrapModifiers({ wrap: flexbox.wrap }),
-	...getFlexDirectionModifiers({ direction: flexbox.direction }),
+	...getAlignContentModifiers({ alignContent: flexbox?.alignContent }),
+	...getAlignItemsModifiers({ alignItems: flexbox?.alignItems }),
+	...getJustifyContentModifiers({ justifyContent: flexbox?.justifyContent }),
+	...getWrapModifiers({ wrap: flexbox?.wrap }),
+	...getFlexDirectionModifiers({ direction: flexbox?.direction }),
 });
