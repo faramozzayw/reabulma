@@ -3,6 +3,7 @@ import classnames from "classnames";
 
 import { Bulma } from "../bulma";
 import { getColorModifiers } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface NotificationProps<T>
 	extends Bulma.Tag,
@@ -10,7 +11,7 @@ export interface NotificationProps<T>
 		Bulma.Light,
 		React.HTMLProps<T> {}
 
-export const Notification: React.FC<NotificationProps<HTMLElement>> = ({
+const __Notification: React.FC<NotificationProps<HTMLElement>> = ({
 	tag = "div",
 	isColor,
 	isLight,
@@ -27,3 +28,7 @@ export const Notification: React.FC<NotificationProps<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Notification = withHelpersModifiers(__Notification);
+
+<Notification isClearFix />;

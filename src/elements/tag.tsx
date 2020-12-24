@@ -9,6 +9,7 @@ import {
 	getLightModifiers,
 	getLinkModifiers,
 } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface Tag<T>
 	extends Bulma.Size,
@@ -19,7 +20,7 @@ export interface Tag<T>
 		Bulma.Rounded,
 		React.HTMLProps<T> {}
 
-export const Tag: React.FC<Tag<HTMLElement>> = ({
+const __Tag: React.FC<Tag<HTMLElement>> = ({
 	tag = "span",
 	isSize,
 	isColor,
@@ -42,3 +43,5 @@ export const Tag: React.FC<Tag<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Tag = withHelpersModifiers(__Tag);

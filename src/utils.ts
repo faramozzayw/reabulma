@@ -45,9 +45,10 @@ export function getModifiersCreator<T, K extends keyof T = any>(
 }
 
 export const getColorModifiers = getModifiersCreator<Bulma.Colors>("isColor");
-export const getAlignmentModifiers = getModifiersCreator<Bulma.Align>(
-	"isAlign",
-);
+export const getAlignmentModifiers = getModifiersCreator<
+	Bulma.Alignment,
+	"isAlign"
+>("isAlign");
 export const getSizeModifiers = getModifiersCreator<Bulma.Sizes>("isSize");
 export const getStateModifiers = getModifiersCreator<Bulma.States>("isState");
 
@@ -98,6 +99,8 @@ export const getHeadingModifiers: ModifierFunction = ({
 	};
 };
 
+/* Helpers modifiers */
+
 export const getAlignContentModifiers = getModifiersCreator<
 	Bulma.Helpers.Flexbox,
 	"alignContent"
@@ -139,4 +142,18 @@ export const getFlexboxModifiers = (flexbox: Bulma.Helpers.Flexbox) => ({
 	...getJustifyContentModifiers({ justifyContent: flexbox?.justifyContent }),
 	...getWrapModifiers({ wrap: flexbox?.wrap }),
 	...getFlexDirectionModifiers({ direction: flexbox?.direction }),
+});
+
+export const getTextColorModifiers = getModifiersCreator<
+	Bulma.Helpers.TextColor,
+	"hasTextColor"
+>("hasTextColor", {
+	prefix: "has-text",
+});
+
+export const getBackgroundColorModifiers = getModifiersCreator<
+	Bulma.Helpers.BackgroundColor,
+	"hasBackgroundColor"
+>("hasBackgroundColor", {
+	prefix: "has-background",
 });

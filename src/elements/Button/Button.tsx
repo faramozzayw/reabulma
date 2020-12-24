@@ -85,5 +85,3 @@ const __Button: ButtonType = ({
 };
 
 export const Button = withHelpersModifiers(__Button);
-
-<Button isColor="black" />;

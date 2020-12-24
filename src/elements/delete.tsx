@@ -3,15 +3,16 @@ import classnames from "classnames";
 
 import { Bulma } from "../bulma";
 import { getSizeModifiers } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface DeleteProps<T>
 	extends Bulma.Tag,
 		Bulma.Size,
 		React.HTMLProps<T> {}
 
-export const Delete: React.FC<DeleteProps<
-	HTMLButtonElement | HTMLAnchorElement
->> = ({ tag = "a", href, isSize, ...props }) => {
+const __Delete: React.FC<
+	DeleteProps<HTMLButtonElement | HTMLAnchorElement>
+> = ({ tag = "a", href, isSize, ...props }) => {
 	const className = classnames(
 		"delete",
 		{
@@ -44,3 +45,5 @@ export const Delete: React.FC<DeleteProps<
 		/>
 	);
 };
+
+export const Delete = withHelpersModifiers(__Delete);

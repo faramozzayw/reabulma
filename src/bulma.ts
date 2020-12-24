@@ -175,8 +175,30 @@ export declare namespace Bulma {
 	}
 
 	export namespace Helpers {
-		export interface AllHelpers {
+		export interface AllHelpers
+			extends TextColor,
+				BackgroundColor,
+				FullWidth,
+				Alignment {
 			flexbox?: Flexbox;
+			/** Moves an element `left` or `right` */
+			isPulled?: "left" | "right";
+			/** Fixes an element's floating children */
+			isClearFix?: boolean;
+			/** Completely **covers** the first positioned parent */
+			isOverlay?: boolean;
+			/** Adds overflow **hidden** */
+			isClipped?: boolean;
+			/** Removes any **radius** */
+			isRadiusless?: boolean;
+			/** Removes any **shadow** */
+			isShadowless?: boolean;
+			/** Prevents the text from being **selectable** */
+			isUnselectable?: boolean;
+			/** Applies `cursor: pointer !important` to the element. */
+			isClickable?: boolean;
+			/** Applies `position: relative` to the element. */
+			isRelative?: boolean;
 		}
 
 		export type JustifyContent =
@@ -237,25 +259,41 @@ export declare namespace Bulma {
 			| "primary"
 			| "secondary"
 			| "code";
+
 		export type TextWeight =
 			| "light"
 			| "normal"
 			| "medium"
 			| "semibold"
 			| "bold";
+
 		export type TextTransformation =
 			| "capitalized"
 			| "lowercase"
 			| "uppercase"
 			| "italic";
 
-		export type AllColor =
-			| Colors
-			| `has-text-${Colors}-${Theme}`
-			| `has-text-${GrayColors}`;
+		export type AllColors =
+			| GrayColors
+			| Exclude<Colors, "text">
+			| `${Exclude<Colors, "text">}-${Theme}`;
 
-		export type BackgroundColor =
-			| `has-background-${Colors}-${Theme}`
-			| `has-background-${GrayColors}`;
+		export interface TextColor {
+			hasTextColor?: AllColors;
+		}
+
+		export type BackgroundColors =
+			| GrayColors
+			| Exclude<Colors, "text">
+			| `${Exclude<Colors, "text">}-${Theme}`;
+
+		export interface BackgroundColor {
+			hasBackgroundColor?: BackgroundColors;
+		}
+
+		export type SpacingType = "m" | "p";
+		export type SpacingDirection = "t" | "b" | "r" | "l" | "x" | "y" | "";
+		export type SpacingSize = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+		export type Spacing = `${SpacingType}${SpacingDirection}-${SpacingSize}`;
 	}
 }
