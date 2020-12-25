@@ -129,4 +129,10 @@ describe("test `withHelpersModifiers`", () => {
 		);
 		expect(getByText(/white-ter/i)).toHaveClass("has-background-white-ter");
 	});
+
+	it("`spacing` prop works correctly", () => {
+		const { container } = render(<WithHelper spacing={["pl-1", "mb-5"]} />);
+
+		expect(container.firstElementChild).toHaveClass("pl-1", "mb-5");
+	});
 });

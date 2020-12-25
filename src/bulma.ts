@@ -180,7 +180,8 @@ export declare namespace Bulma {
 				BackgroundColor,
 				FullWidth,
 				TextAlignment,
-				Spacing {
+				Spacing,
+				Typography {
 			flexbox?: Flexbox;
 			/** Moves an element `left` or `right` */
 			isPulled?: "left" | "right";
@@ -200,6 +201,21 @@ export declare namespace Bulma {
 			isClickable?: boolean;
 			/** Applies `position: relative` to the element. */
 			isRelative?: boolean;
+		}
+
+		/*
+		**************************
+			Flexbox
+		**************************
+		*/
+		export interface Flexbox {
+			alignContent?: AlignContent;
+			alignItems?: AlignItems;
+			justifyContent?: JustifyContent;
+			grow?: 1 | 2 | 3 | 4 | 5 | 6;
+			shrink?: 1 | 2 | 3 | 4 | 5 | 6;
+			wrap?: FlexWrap;
+			direction?: FlexDirection;
 		}
 
 		export type JustifyContent =
@@ -244,15 +260,23 @@ export declare namespace Bulma {
 			| "column"
 			| "column-reverse";
 
-		export interface Flexbox {
-			alignContent?: AlignContent;
-			alignItems?: AlignItems;
-			justifyContent?: JustifyContent;
-			grow?: 1 | 2 | 3 | 4 | 5 | 6;
-			shrink?: 1 | 2 | 3 | 4 | 5 | 6;
-			wrap?: FlexWrap;
-			direction?: FlexDirection;
+		/*
+		**************************
+			Typography
+		**************************
+		*/
+		export interface Typography {
+			/** You can transform the text with the use of one of 4 text transformation helpers */
+			transformation?: TextTransformation;
+			/** You can transform the text weight with the use of one of 5 text weight helpers */
+			weight?: TextWeight;
+			/** You can change the font family with the use of one of 5 font family helpers */
+			family?: Family;
+			isSize?: Sizes | ResponsiveSize;
 		}
+
+		export type Sizes = 1 | 2 | 3 | 4 | 5 | 6 | 7;
+		export type ResponsiveSize = `${Sizes}`;
 
 		export type Family =
 			| "sans-serif"
@@ -278,6 +302,11 @@ export declare namespace Bulma {
 			isAlign?: Align | "justified";
 		}
 
+		/*
+		**************************
+			Colors
+		**************************
+		*/
 		export type AllColors =
 			| GrayShades
 			| Exclude<Colors, "text">
@@ -296,6 +325,11 @@ export declare namespace Bulma {
 			hasBackgroundColor?: BackgroundColors;
 		}
 
+		/*
+		**************************
+			Spacing
+		**************************
+		*/
 		export type SpacingType = "m" | "p";
 		export type SpacingDirection = "t" | "b" | "r" | "l" | "x" | "y" | "";
 		export type SpacingSize = 0 | 1 | 2 | 3 | 4 | 5 | 6;

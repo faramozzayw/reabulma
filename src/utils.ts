@@ -103,10 +103,11 @@ export const getHeadingModifiers: ModifierFunction = ({
 
 export const getSpacingModifiers: ModifierFunction<Bulma.Helpers.Spacing> = ({
 	spacing,
-}) => ({
-	[spacing[0]]: Boolean(spacing),
-	[spacing[1]]: Boolean(spacing),
-});
+}) => {
+	if (!spacing) return {};
+
+	return Object.fromEntries(spacing.map((item) => [item, Boolean(item)]));
+};
 
 export const getTextAlignmentModifiers = getModifiersCreator<
 	Bulma.Helpers.TextAlignment,

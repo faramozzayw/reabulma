@@ -48,7 +48,7 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 				"is-unselectable": isUnselectable,
 				"is-clickable": isClickable,
 				"is-relative": isRelative,
-				//...getSpacingModifiers({ spacing }),
+				...getSpacingModifiers({ spacing }),
 				...getTextAlignmentModifiers({ isAlign }),
 				...getFlexboxModifiers(flexbox),
 				...getTextColorModifiers({ hasTextColor }),
