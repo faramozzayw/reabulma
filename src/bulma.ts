@@ -15,7 +15,7 @@ export declare namespace Bulma {
 		| "danger"
 		| "text";
 
-	export type GrayColors =
+	export type GrayShades =
 		| "black-bis"
 		| "black-ter"
 		| "grey-darker"
@@ -179,7 +179,8 @@ export declare namespace Bulma {
 			extends TextColor,
 				BackgroundColor,
 				FullWidth,
-				Alignment {
+				TextAlignment,
+				Spacing {
 			flexbox?: Flexbox;
 			/** Moves an element `left` or `right` */
 			isPulled?: "left" | "right";
@@ -273,19 +274,23 @@ export declare namespace Bulma {
 			| "uppercase"
 			| "italic";
 
+		export interface TextAlignment {
+			isAlign?: Align | "justified";
+		}
+
 		export type AllColors =
-			| GrayColors
+			| GrayShades
 			| Exclude<Colors, "text">
-			| `${Exclude<Colors, "text">}-${Theme}`;
+			| `${Exclude<Colors, "text" | "light" | "dark">}-${Theme}`;
 
 		export interface TextColor {
 			hasTextColor?: AllColors;
 		}
 
 		export type BackgroundColors =
-			| GrayColors
+			| GrayShades
 			| Exclude<Colors, "text">
-			| `${Exclude<Colors, "text">}-${Theme}`;
+			| `${Exclude<Colors, "text" | "light" | "dark">}-${Theme}`;
 
 		export interface BackgroundColor {
 			hasBackgroundColor?: BackgroundColors;
@@ -294,6 +299,11 @@ export declare namespace Bulma {
 		export type SpacingType = "m" | "p";
 		export type SpacingDirection = "t" | "b" | "r" | "l" | "x" | "y" | "";
 		export type SpacingSize = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-		export type Spacing = `${SpacingType}${SpacingDirection}-${SpacingSize}`;
+		export type AllSpacing = `${SpacingType}${SpacingDirection}-${SpacingSize}`;
+
+		export interface Spacing {
+			/** Bulma provides margin `m*` and padding `p*` helpers in all directions */
+			spacing?: [AllSpacing?, AllSpacing?];
+		}
 	}
 }

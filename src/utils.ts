@@ -101,6 +101,20 @@ export const getHeadingModifiers: ModifierFunction = ({
 
 /* Helpers modifiers */
 
+export const getSpacingModifiers: ModifierFunction<Bulma.Helpers.Spacing> = ({
+	spacing,
+}) => ({
+	[spacing[0]]: Boolean(spacing),
+	[spacing[1]]: Boolean(spacing),
+});
+
+export const getTextAlignmentModifiers = getModifiersCreator<
+	Bulma.Helpers.TextAlignment,
+	"isAlign"
+>("isAlign", {
+	prefix: "has-text",
+});
+
 export const getAlignContentModifiers = getModifiersCreator<
 	Bulma.Helpers.Flexbox,
 	"alignContent"

@@ -3,9 +3,10 @@ import classNames from "classnames";
 
 import { Bulma } from "./bulma";
 import {
-	getAlignmentModifiers,
 	getBackgroundColorModifiers,
 	getFlexboxModifiers,
+	getSpacingModifiers,
+	getTextAlignmentModifiers,
 	getTextColorModifiers,
 } from "./utils";
 
@@ -23,6 +24,7 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 		flexbox,
 		hasTextColor,
 		hasBackgroundColor,
+		spacing,
 		isPulled,
 		isClearFix,
 		isOverlay,
@@ -46,7 +48,8 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 				"is-unselectable": isUnselectable,
 				"is-clickable": isClickable,
 				"is-relative": isRelative,
-				...getAlignmentModifiers({ isAlign }),
+				//...getSpacingModifiers({ spacing }),
+				...getTextAlignmentModifiers({ isAlign }),
 				...getFlexboxModifiers(flexbox),
 				...getTextColorModifiers({ hasTextColor }),
 				...getBackgroundColorModifiers({ hasBackgroundColor }),
