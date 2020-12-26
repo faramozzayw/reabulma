@@ -2,6 +2,7 @@ import { fractions, width } from "./columns/utils";
 
 export declare namespace Bulma {
 	type Theme = "light" | "dark";
+	type Viewports = "mobile" | "tablet" | "desktop" | "widescreen" | "fullhd";
 
 	export type Colors =
 		| "white"
@@ -153,13 +154,9 @@ export declare namespace Bulma {
 
 		type AllSizes = RegularSizes | StringSizes | Fractions | Width;
 
-		export interface SizeObject {
-			mobile?: AllSizes;
-			tablet?: AllSizes;
-			desktop?: AllSizes;
-			widescreen?: AllSizes;
-			default?: AllSizes;
-		}
+		export type SizeObject = {
+			[key in Viewports | "default"]?: AllSizes;
+		};
 
 		export type Platforms = keyof SizeObject;
 
@@ -180,9 +177,9 @@ export declare namespace Bulma {
 				BackgroundColor,
 				FullWidth,
 				TextAlignment,
-				Spacing,
-				Typography {
+				Spacing {
 			flexbox?: Flexbox;
+			typography?: Typography;
 			/** Moves an element `left` or `right` */
 			isPulled?: "left" | "right";
 			/** Fixes an element's floating children */
@@ -272,11 +269,13 @@ export declare namespace Bulma {
 			weight?: TextWeight;
 			/** You can change the font family with the use of one of 5 font family helpers */
 			family?: Family;
-			isSize?: Sizes | ResponsiveSize;
+			size?: Sizes | ResponsiveSize;
 		}
 
 		export type Sizes = 1 | 2 | 3 | 4 | 5 | 6 | 7;
-		export type ResponsiveSize = `${Sizes}`;
+		export type ResponsiveSize = {
+			[key in Viewports | "touch" | "default"]?: Sizes;
+		};
 
 		export type Family =
 			| "sans-serif"
@@ -337,7 +336,7 @@ export declare namespace Bulma {
 
 		export interface Spacing {
 			/** Bulma provides margin `m*` and padding `p*` helpers in all directions */
-			spacing?: [AllSpacing?, AllSpacing?];
+			spacing?: AllSpacing[];
 		}
 	}
 }

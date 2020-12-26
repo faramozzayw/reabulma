@@ -15,8 +15,9 @@ export function combineModifiers(
 /**
  * The function returns a function for the modifier.
  *
- * @param {T} T - the type parameter that is used for the field type
- * @param {string} key - field name
+ * @param T - the type parameter that is used for the field type
+ * @param key - field name
+ * @param options
  *
  * # Example
  * ```ts

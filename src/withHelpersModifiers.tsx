@@ -9,6 +9,7 @@ import {
 	getTextAlignmentModifiers,
 	getTextColorModifiers,
 } from "./utils";
+import { getTypographyModifiers } from "./typography";
 
 export type HelpersComponent<T> = React.FC<
 	T & Bulma.Helpers.AllHelpers & React.HTMLProps<HTMLElement>
@@ -22,6 +23,7 @@ export function getDisplayName<T>(WrappedComponent: React.ComponentType<T>) {
 export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 	const WrappedComponent: HelpersComponent<T> = ({
 		flexbox,
+		typography,
 		hasTextColor,
 		hasBackgroundColor,
 		spacing,
@@ -48,9 +50,10 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 				"is-unselectable": isUnselectable,
 				"is-clickable": isClickable,
 				"is-relative": isRelative,
+				...getFlexboxModifiers(flexbox),
+				...getTypographyModifiers(typography),
 				...getSpacingModifiers({ spacing }),
 				...getTextAlignmentModifiers({ isAlign }),
-				...getFlexboxModifiers(flexbox),
 				...getTextColorModifiers({ hasTextColor }),
 				...getBackgroundColorModifiers({ hasBackgroundColor }),
 			},

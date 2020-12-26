@@ -135,4 +135,116 @@ describe("test `withHelpersModifiers`", () => {
 
 		expect(container.firstElementChild).toHaveClass("pl-1", "mb-5");
 	});
+
+	it("`transformation` prop for `Typography` works correctly", () => {
+		const { getByText } = render(
+			<>
+				<WithHelper
+					typography={{
+						transformation: "lowercase",
+					}}
+				>
+					lowercase
+				</WithHelper>
+				<WithHelper
+					typography={{
+						transformation: "capitalized",
+					}}
+				>
+					capitalized
+				</WithHelper>
+			</>,
+		);
+
+		expect(getByText(/lowercase/i)).toHaveClass("is-lowercase");
+		expect(getByText(/capitalized/i)).toHaveClass("is-capitalized");
+	});
+
+	it("`transformation` prop for `Typography` works correctly", () => {
+		const { getByText } = render(
+			<>
+				<WithHelper
+					typography={{
+						weight: "semibold",
+					}}
+				>
+					semibold
+				</WithHelper>
+				<WithHelper
+					typography={{
+						weight: "light",
+					}}
+				>
+					light
+				</WithHelper>
+				<WithHelper
+					typography={{
+						weight: "medium",
+					}}
+				>
+					medium
+				</WithHelper>
+			</>,
+		);
+
+		expect(getByText(/semibold/i)).toHaveClass("has-text-weight-semibold");
+		expect(getByText(/light/i)).toHaveClass("has-text-weight-light");
+		expect(getByText(/medium/i)).toHaveClass("has-text-weight-medium");
+	});
+
+	it("`transformation` prop for `Typography` works correctly", () => {
+		const { getByText } = render(
+			<>
+				<WithHelper
+					typography={{
+						family: "monospace",
+					}}
+				>
+					monospace
+				</WithHelper>
+				<WithHelper
+					typography={{
+						family: "code",
+					}}
+				>
+					code
+				</WithHelper>
+			</>,
+		);
+
+		expect(getByText(/monospace/i)).toHaveClass("is-family-monospace");
+		expect(getByText(/code/i)).toHaveClass("is-family-code");
+	});
+
+	it("`size`(number) prop for `Typography` works correctly", () => {
+		const { container } = render(
+			<WithHelper
+				typography={{
+					size: 7,
+				}}
+			/>,
+		);
+
+		expect(container.firstChild).toHaveClass("is-size-7");
+	});
+
+	it("`size`(object) prop for `Typography` works correctly", () => {
+		const { container } = render(
+			<WithHelper
+				typography={{
+					size: {
+						fullhd: 1,
+						mobile: 3,
+						touch: 4,
+					},
+				}}
+			/>,
+		);
+
+		expect(container.firstChild).toHaveClass(
+			"is-size-3-mobile",
+			"is-size-4-touch",
+			"is-size-1-fullhd",
+		);
+	});
 });
