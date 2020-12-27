@@ -176,7 +176,6 @@ export declare namespace Bulma {
 			extends TextColor,
 				BackgroundColor,
 				FullWidth,
-				TextAlignment,
 				Spacing {
 			flexbox?: Flexbox;
 			typography?: Typography;
@@ -270,7 +269,7 @@ export declare namespace Bulma {
 			/** You can change the font family with the use of one of 5 font family helpers */
 			family?: Family;
 			size?: Sizes | ResponsiveSize;
-			align?: ResponsiveTextAlignment;
+			align?: TextAlign | ResponsiveTextAlignment;
 		}
 
 		export type Sizes = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -303,13 +302,10 @@ export declare namespace Bulma {
 		}
 
 		export type TextAlign = Align | "justified";
+		export type Only = boolean;
+		// prettier-ignore
 		export type ResponsiveTextAlignment = {
-			[key in Viewports | "touch" | "default"]?:
-				| TextAlign
-				| {
-						width?: TextAlign;
-						isOnly?: boolean;
-				  };
+			[key in Viewports | "touch" | "default"]?: TextAlign | [TextAlign?, Only?];
 		};
 
 		/*
@@ -348,6 +344,32 @@ export declare namespace Bulma {
 		export interface Spacing {
 			/** Bulma provides margin `m*` and padding `p*` helpers in all directions */
 			spacing?: AllSpacing[];
+		}
+		/*
+		**************************
+			Visibility
+		**************************
+		*/
+		type VisibilityViewports = `${Viewports | "touch"}${"-only" | ""}`;
+		export interface Show {
+			isBlock?: boolean | VisibilityViewports;
+			isFlex?: boolean | VisibilityViewports;
+			isInline?: boolean | VisibilityViewports;
+			isInlineBlock?: boolean | VisibilityViewports;
+			isInlineFlex?: boolean | VisibilityViewports;
+		}
+
+		export interface Hide {
+			isHidden?: VisibilityViewports;
+		}
+
+		export interface VisibilityHelpers {
+			/** Adds visibility **hidden** */
+			isInvisible?: boolean;
+			/** Hides element */
+			isHidden?: boolean;
+			/** Hide elements **visually** but keep the element available to be announced by a **screen reader** */
+			isSrOnly?: boolean;
 		}
 	}
 }
