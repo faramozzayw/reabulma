@@ -66,22 +66,6 @@ describe("test `withHelpersModifiers`", () => {
 		expect(container.firstChild).toHaveClass("is-relative");
 	});
 
-	it("`isAlign` prop works correctly", () => {
-		const { getByText } = render(
-			<>
-				<WithHelper isAlign="justified">justified</WithHelper>
-				<WithHelper isAlign="left">left</WithHelper>
-				<WithHelper isAlign="centered">centered</WithHelper>
-				<WithHelper isAlign="right">right</WithHelper>
-			</>,
-		);
-
-		expect(getByText(/justified/i)).toHaveClass("has-text-justified");
-		expect(getByText(/left/i)).toHaveClass("has-text-left");
-		expect(getByText(/centered/i)).toHaveClass("has-text-centered");
-		expect(getByText(/right/i)).toHaveClass("has-text-right");
-	});
-
 	it("`hasTextColor` prop works correctly", () => {
 		const { getByText } = render(
 			<>
@@ -246,5 +230,105 @@ describe("test `withHelpersModifiers`", () => {
 			"is-size-4-touch",
 			"is-size-1-fullhd",
 		);
+	});
+
+	it("`align`(empty value) prop for `Typography` works correctly", () => {
+		const { container } = render(
+			<WithHelper
+				typography={{
+					align: {},
+				}}
+			/>,
+		);
+
+		expect(container.firstChild).not.toHaveClass("has-text");
+	});
+
+	it("`align`(string) prop for `Typography` works correctly", () => {
+		const { getByText } = render(
+			<>
+				<WithHelper
+					typography={{
+						align: "justified",
+					}}
+				>
+					justified
+				</WithHelper>
+				<WithHelper
+					typography={{
+						align: "left",
+					}}
+				>
+					left
+				</WithHelper>
+				<WithHelper
+					typography={{
+						align: "centered",
+					}}
+				>
+					centered
+				</WithHelper>
+				<WithHelper
+					typography={{
+						align: "right",
+					}}
+				>
+					right
+				</WithHelper>
+			</>,
+		);
+
+		expect(getByText(/justified/i)).toHaveClass("has-text-justified");
+		expect(getByText(/left/i)).toHaveClass("has-text-left");
+		expect(getByText(/centered/i)).toHaveClass("has-text-centered");
+		expect(getByText(/right/i)).toHaveClass("has-text-right");
+	});
+
+	it("`align`(string) prop for `Typography` works correctly", () => {
+		const { getByText } = render(
+			<>
+				<WithHelper
+					typography={{
+						align: {
+							default: ["justified", true],
+						},
+					}}
+				>
+					justified
+				</WithHelper>
+				<WithHelper
+					typography={{
+						align: {
+							touch: "left",
+						},
+					}}
+				>
+					left
+				</WithHelper>
+				<WithHelper
+					typography={{
+						align: {
+							fullhd: ["centered", true],
+						},
+					}}
+				>
+					centered
+				</WithHelper>
+				<WithHelper
+					typography={{
+						align: {
+							widescreen: "right",
+						},
+					}}
+				>
+					right
+				</WithHelper>
+			</>,
+		);
+
+		expect(getByText(/justified/i)).toHaveClass("has-text-justified-only");
+		expect(getByText(/left/i)).toHaveClass("has-text-left-touch");
+		expect(getByText(/centered/i)).toHaveClass("has-text-centered-fullhd-only");
+		expect(getByText(/right/i)).toHaveClass("has-text-right-widescreen");
 	});
 });

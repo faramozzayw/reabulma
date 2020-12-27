@@ -270,6 +270,7 @@ export declare namespace Bulma {
 			/** You can change the font family with the use of one of 5 font family helpers */
 			family?: Family;
 			size?: Sizes | ResponsiveSize;
+			align?: ResponsiveTextAlignment;
 		}
 
 		export type Sizes = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -300,6 +301,16 @@ export declare namespace Bulma {
 		export interface TextAlignment {
 			isAlign?: Align | "justified";
 		}
+
+		export type TextAlign = Align | "justified";
+		export type ResponsiveTextAlignment = {
+			[key in Viewports | "touch" | "default"]?:
+				| TextAlign
+				| {
+						width?: TextAlign;
+						isOnly?: boolean;
+				  };
+		};
 
 		/*
 		**************************

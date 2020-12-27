@@ -47,12 +47,53 @@ export const getSizeModifiers: ModifierFunction = (
 	}
 
 	if (typeof size === "object") return getResponsiveSizeModifiers(size);
+
+	return {};
+};
+
+export const getPlainAlignModifiers = getModifiersCreator<
+	Bulma.Helpers.Typography,
+	"align"
+>("align", {
+	prefix: "has-text",
+});
+
+export const getResponsiveAlignModifiers = (
+	isAlign: Bulma.Helpers.ResponsiveTextAlignment,
+): Modifier => {
+	let resultSize = {};
+
+	for (const [platform, align] of Object.entries(isAlign)) {
+		const isDefault = platform === "default";
+		const isTuple = Array.isArray(align);
+		const withOnly = isTuple ? Boolean(align[1]) : false;
+
+		const alignPart = isTuple ? align[0] : align;
+		const platformPart = isDefault ? "" : `-${platform}`;
+		const onlyPart = withOnly ? "-only" : "";
+
+		resultSize = {
+			...resultSize,
+			[`has-text-${alignPart}${platformPart}${onlyPart}`]: true,
+		};
+	}
+
+	return resultSize;
+};
+
+export const getTextAlignModifiers: ModifierFunction = (
+	align: Bulma.Helpers.Typography["align"],
+) => {
+	if (typeof align === "string") return getPlainAlignModifiers({ align });
+	if (typeof align === "object") return getResponsiveAlignModifiers(align);
+
 	return {};
 };
 
 export const getTypographyModifiers = (
 	typography: Bulma.Helpers.Typography,
 ) => ({
+	...getTextAlignModifiers(typography?.align),
 	...getSizeModifiers(typography?.size),
 	...getTransformationModifiers({ transformation: typography?.transformation }),
 	...getWeightModifiers({ weight: typography?.weight }),

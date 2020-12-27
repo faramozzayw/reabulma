@@ -110,13 +110,6 @@ export const getSpacingModifiers: ModifierFunction<Bulma.Helpers.Spacing> = ({
 	return Object.fromEntries(spacing.map((item) => [item, Boolean(item)]));
 };
 
-export const getTextAlignmentModifiers = getModifiersCreator<
-	Bulma.Helpers.TextAlignment,
-	"isAlign"
->("isAlign", {
-	prefix: "has-text",
-});
-
 export const getAlignContentModifiers = getModifiersCreator<
 	Bulma.Helpers.Flexbox,
 	"alignContent"

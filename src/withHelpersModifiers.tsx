@@ -6,7 +6,6 @@ import {
 	getBackgroundColorModifiers,
 	getFlexboxModifiers,
 	getSpacingModifiers,
-	getTextAlignmentModifiers,
 	getTextColorModifiers,
 } from "./utils";
 import { getTypographyModifiers } from "./typography";
@@ -36,7 +35,6 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 		isUnselectable,
 		isClickable,
 		isRelative,
-		isAlign,
 		...props
 	}) => {
 		const className = classNames(
@@ -53,7 +51,6 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 				...getFlexboxModifiers(flexbox),
 				...getTypographyModifiers(typography),
 				...getSpacingModifiers({ spacing }),
-				...getTextAlignmentModifiers({ isAlign }),
 				...getTextColorModifiers({ hasTextColor }),
 				...getBackgroundColorModifiers({ hasBackgroundColor }),
 			},
