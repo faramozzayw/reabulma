@@ -331,4 +331,41 @@ describe("test `withHelpersModifiers`", () => {
 		expect(getByText(/centered/i)).toHaveClass("has-text-centered-fullhd-only");
 		expect(getByText(/right/i)).toHaveClass("has-text-right-widescreen");
 	});
+
+	it("`isDisplay`(plain string) prop for `Typography` works correctly", () => {
+		const { container } = render(<WithHelper isDisplay="flex-desktop-only" />);
+
+		expect(container.firstChild).toHaveClass("is-flex-desktop-only");
+	});
+
+	it("`isDisplay`(array) prop for `Typography` works correctly", () => {
+		const { container } = render(
+			<WithHelper
+				isDisplay={[
+					"block-mobile-only",
+					"inline-widescreen-only",
+					"flex-fullhd",
+				]}
+			/>,
+		);
+
+		expect(container.firstChild).toHaveClass("is-block-mobile-only");
+		expect(container.firstChild).toHaveClass("is-inline-widescreen-only");
+		expect(container.firstChild).toHaveClass("is-flex-fullhd");
+	});
+
+	it("`isDisplay`(object) prop for `Typography` works correctly", () => {
+		const { container } = render(
+			<WithHelper
+				isDisplay={{
+					flex: "desktop-only",
+					inline: ["fullhd", "desktop-only"],
+				}}
+			/>,
+		);
+
+		expect(container.firstChild).toHaveClass("is-flex-desktop-only");
+		expect(container.firstChild).toHaveClass("is-inline-desktop-only");
+		expect(container.firstChild).toHaveClass("is-inline-fullhd");
+	});
 });

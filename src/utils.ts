@@ -1,5 +1,8 @@
 import { Bulma } from "./bulma";
 
+export * from "./typography";
+export * from "./visibility";
+
 export type Modifier = { [k: string]: boolean };
 export type ModifierFunction<T = unknown> = (props: T) => Modifier;
 

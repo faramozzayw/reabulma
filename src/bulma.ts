@@ -3,6 +3,7 @@ import { fractions, width } from "./columns/utils";
 export declare namespace Bulma {
 	type Theme = "light" | "dark";
 	type Viewports = "mobile" | "tablet" | "desktop" | "widescreen" | "fullhd";
+	type IsOnly = "-only" | "";
 
 	export type Colors =
 		| "white"
@@ -176,7 +177,10 @@ export declare namespace Bulma {
 			extends TextColor,
 				BackgroundColor,
 				FullWidth,
-				Spacing {
+				Spacing,
+				Show,
+				Hide,
+				VisibilityHelpers {
 			flexbox?: Flexbox;
 			typography?: Typography;
 			/** Moves an element `left` or `right` */
@@ -302,10 +306,9 @@ export declare namespace Bulma {
 		}
 
 		export type TextAlign = Align | "justified";
-		export type Only = boolean;
 		// prettier-ignore
 		export type ResponsiveTextAlignment = {
-			[key in Viewports | "touch" | "default"]?: TextAlign | [TextAlign?, Only?];
+			[key in Viewports | "touch" | "default"]?: TextAlign | [TextAlign?, boolean?];
 		};
 
 		/*
@@ -350,24 +353,37 @@ export declare namespace Bulma {
 			Visibility
 		**************************
 		*/
-		type VisibilityViewports = `${Viewports | "touch"}${"-only" | ""}`;
+
+		export type DisplayType =
+			| "block"
+			| "flex"
+			| "inline"
+			| "inline-block"
+			| "inline-flex";
+
+		export type Platforms = `${Viewports | "touch"}${IsOnly}`;
+		export type PlatformsWithDefault = Platforms | "default";
+
+		export type DisplayObject = {
+			[key in DisplayType]?: PlatformsWithDefault | PlatformsWithDefault[];
+		};
+		export type Displays = `${DisplayType}-${Platforms}`;
+		// export type DisplayObject = {
+		// 	[key in DisplayType]?: `${Extract<DisplayType, key>}-${Displays}`;
+		// };
+
 		export interface Show {
-			isBlock?: boolean | VisibilityViewports;
-			isFlex?: boolean | VisibilityViewports;
-			isInline?: boolean | VisibilityViewports;
-			isInlineBlock?: boolean | VisibilityViewports;
-			isInlineFlex?: boolean | VisibilityViewports;
+			isDisplay?: Displays | Displays[] | DisplayObject;
 		}
 
 		export interface Hide {
-			isHidden?: VisibilityViewports;
+			/** Hides element */
+			isHidden?: boolean | Platforms | Platforms[];
 		}
 
 		export interface VisibilityHelpers {
 			/** Adds visibility **hidden** */
 			isInvisible?: boolean;
-			/** Hides element */
-			isHidden?: boolean;
 			/** Hide elements **visually** but keep the element available to be announced by a **screen reader** */
 			isSrOnly?: boolean;
 		}

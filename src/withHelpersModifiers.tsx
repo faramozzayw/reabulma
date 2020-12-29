@@ -7,8 +7,9 @@ import {
 	getFlexboxModifiers,
 	getSpacingModifiers,
 	getTextColorModifiers,
+	getDisplayModifiers,
+	getTypographyModifiers,
 } from "./utils";
-import { getTypographyModifiers } from "./typography";
 
 export type HelpersComponent<T> = React.FC<
 	T & Bulma.Helpers.AllHelpers & React.HTMLProps<HTMLElement>
@@ -26,6 +27,7 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 		hasTextColor,
 		hasBackgroundColor,
 		spacing,
+		isDisplay,
 		isPulled,
 		isClearFix,
 		isOverlay,
@@ -50,6 +52,7 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 				"is-relative": isRelative,
 				...getFlexboxModifiers(flexbox),
 				...getTypographyModifiers(typography),
+				...getDisplayModifiers({ isDisplay }),
 				...getSpacingModifiers({ spacing }),
 				...getTextColorModifiers({ hasTextColor }),
 				...getBackgroundColorModifiers({ hasBackgroundColor }),
