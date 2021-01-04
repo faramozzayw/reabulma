@@ -10,6 +10,7 @@ import {
 	getDisplayModifiers,
 	getTypographyModifiers,
 } from "./utils";
+import { getHideModifiers } from "./visibility";
 
 export type HelpersComponent<T> = React.FC<
 	T & Bulma.Helpers.AllHelpers & React.HTMLProps<HTMLElement>
@@ -28,6 +29,10 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 		hasBackgroundColor,
 		spacing,
 		isDisplay,
+		isHidden,
+
+		/* */
+
 		isPulled,
 		isClearFix,
 		isOverlay,
@@ -37,6 +42,8 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 		isUnselectable,
 		isClickable,
 		isRelative,
+		isInvisible,
+		isSrOnly,
 		...props
 	}) => {
 		const className = classNames(
@@ -50,9 +57,12 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 				"is-unselectable": isUnselectable,
 				"is-clickable": isClickable,
 				"is-relative": isRelative,
+				"is-invisible": isInvisible,
+				"is-sr-only": isSrOnly,
 				...getFlexboxModifiers(flexbox),
 				...getTypographyModifiers(typography),
 				...getDisplayModifiers({ isDisplay }),
+				...getHideModifiers({ isHidden }),
 				...getSpacingModifiers({ spacing }),
 				...getTextColorModifiers({ hasTextColor }),
 				...getBackgroundColorModifiers({ hasBackgroundColor }),

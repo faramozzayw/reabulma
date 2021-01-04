@@ -338,7 +338,7 @@ describe("test `withHelpersModifiers`", () => {
 		expect(container.firstChild).toHaveClass("is-flex-desktop-only");
 	});
 
-	it("`isDisplay`(array) prop for `Typography` works correctly", () => {
+	it("`isDisplay`(array) prop for `Visibility` works correctly", () => {
 		const { container } = render(
 			<WithHelper
 				isDisplay={[
@@ -354,18 +354,40 @@ describe("test `withHelpersModifiers`", () => {
 		expect(container.firstChild).toHaveClass("is-flex-fullhd");
 	});
 
-	it("`isDisplay`(object) prop for `Typography` works correctly", () => {
+	it("`isDisplay`(object) prop for `Visibility` works correctly", () => {
 		const { container } = render(
 			<WithHelper
 				isDisplay={{
-					flex: "desktop-only",
+					flex: "mobile",
 					inline: ["fullhd", "desktop-only"],
 				}}
 			/>,
 		);
 
-		expect(container.firstChild).toHaveClass("is-flex-desktop-only");
+		expect(container.firstChild).toHaveClass("is-flex-mobile");
 		expect(container.firstChild).toHaveClass("is-inline-desktop-only");
 		expect(container.firstChild).toHaveClass("is-inline-fullhd");
+	});
+
+	it("`isHide`(boolean) prop for `Visibility` works correctly", () => {
+		const { container } = render(<WithHelper isHidden />);
+
+		expect(container.firstChild).toHaveClass("is-hidden");
+	});
+
+	it("`isHide`(string) prop for `Visibility` works correctly", () => {
+		const { container } = render(<WithHelper isHidden="fullhd-only" />);
+
+		expect(container.firstChild).toHaveClass("is-hidden-fullhd-only");
+	});
+
+	it("`isHide`(array) prop for `Visibility` works correctly", () => {
+		const { container } = render(
+			<WithHelper isHidden={["tablet", "widescreen-only", "mobile-only"]} />,
+		);
+
+		expect(container.firstChild).toHaveClass("is-hidden-tablet");
+		expect(container.firstChild).toHaveClass("is-hidden-widescreen-only");
+		expect(container.firstChild).toHaveClass("is-hidden-mobile-only");
 	});
 });
