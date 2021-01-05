@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeroFooter renders correctly 1`] = `
+<footer
+  class="hero-foot"
+/>
+`;

@@ -2,10 +2,11 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface HeroBody<T> extends Bulma.Tag, React.HTMLProps<T> {}
+export interface HeroBodyProps<T> extends Bulma.Tag, React.HTMLProps<T> {}
 
-export const HeroBody: React.FC<HeroBody<HTMLElement>> = ({
+const __HeroBody: React.FC<HeroBodyProps<HTMLElement>> = ({
 	tag = "div",
 	...props
 }) => {
@@ -13,3 +14,5 @@ export const HeroBody: React.FC<HeroBody<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const HeroBody = withHelpersModifiers(__HeroBody);
