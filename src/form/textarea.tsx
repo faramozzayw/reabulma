@@ -7,6 +7,7 @@ import {
 	getSizeModifiers,
 	getStateModifiers,
 } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface TextAreaProps<T = HTMLTextAreaElement>
 	extends Bulma.Color,
@@ -16,7 +17,7 @@ export interface TextAreaProps<T = HTMLTextAreaElement>
 	hasFixedSize?: boolean;
 }
 
-export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
+const __TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 	({ isSize, isState, isColor, hasFixedSize, ...props }, ref) => {
 		const className = classnames(
 			"textarea",
@@ -38,3 +39,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 		);
 	},
 );
+
+export const TextArea = withHelpersModifiers(__TextArea);

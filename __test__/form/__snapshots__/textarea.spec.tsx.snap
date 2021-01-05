@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`textarea renders correctly 1`] = `
+<body>
+  <div>
+    <textarea
+      class="textarea"
+    />
+  </div>
+</body>
+`;

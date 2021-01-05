@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="select"
+    >
+      <select
+        class=""
+      />
+    </div>
+  </div>
+</body>
+`;

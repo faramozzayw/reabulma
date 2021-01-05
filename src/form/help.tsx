@@ -3,10 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "./../bulma";
 import { getColorModifiers } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface Help<T> extends Bulma.Color, Bulma.Tag, React.HTMLProps<T> {}
+export interface HelpProps<T>
+	extends Bulma.Color,
+		Bulma.Tag,
+		React.HTMLProps<T> {}
 
-export const Help = ({ tag = "div", isColor, ...props }: Help<HTMLElement>) => {
+const __Help = ({ tag = "div", isColor, ...props }: HelpProps<HTMLElement>) => {
 	const className = classnames(
 		"help",
 		{
@@ -17,3 +21,5 @@ export const Help = ({ tag = "div", isColor, ...props }: Help<HTMLElement>) => {
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Help = withHelpersModifiers(__Help);
