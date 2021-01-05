@@ -30,7 +30,7 @@ yarn add @faramo.zayw/reabulma
 ```jsx
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Container, Title } from "bloomer";
+import { Container, Title } from "@faramo.zayw/reabulma";
 
 ReactDOM.render(
 	<Container>
