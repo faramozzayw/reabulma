@@ -3,7 +3,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 
 import { ProgressBar } from "../../src/index";
 
-import type { ProgressBar as ProgressBarProps } from "../../src/elements/ProgressBar";
+import type { ProgressBarProps } from "../../src/elements/ProgressBar";
 
 export default {
 	title: "Example/Elements/ProgressBar",

@@ -5,9 +5,12 @@ import { Bulma } from "./../bulma";
 import { getSizeModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface Content<T> extends Bulma.Size, Bulma.Tag, React.HTMLProps<T> {}
+export interface ContentProps<T>
+	extends Bulma.Size,
+		Bulma.Tag,
+		React.HTMLProps<T> {}
 
-const __Content: React.FC<Content<HTMLElement>> = ({
+const __Content: React.FC<ContentProps<HTMLElement>> = ({
 	tag = "div",
 	isSize,
 	...props

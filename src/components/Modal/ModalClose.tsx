@@ -4,17 +4,18 @@ import classnames from "classnames";
 import { Bulma } from "./../../bulma";
 
 import { getSizeModifiers } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface ModalClose<T>
+export interface ModalCloseProps<T>
 	extends Bulma.Size,
 		Bulma.Tag,
 		React.HTMLProps<T> {}
 
-export function ModalClose({
+function __ModalClose({
 	tag = "button",
 	isSize,
 	...props
-}: ModalClose<HTMLElement>) {
+}: ModalCloseProps<HTMLElement>) {
 	const className = classnames(
 		"modal-close",
 		{
@@ -25,3 +26,5 @@ export function ModalClose({
 
 	return React.createElement(tag, { ...props, className });
 }
+
+export const ModalClose = withHelpersModifiers(__ModalClose);

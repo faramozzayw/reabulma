@@ -2,10 +2,11 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface PanelHeading<T> extends Bulma.Tag, React.HTMLProps<T> {}
+export interface PanelHeadingProps<T> extends Bulma.Tag, React.HTMLProps<T> {}
 
-export const PanelHeading: React.FC<PanelHeading<HTMLElement>> = ({
+const __PanelHeading: React.FC<PanelHeadingProps<HTMLElement>> = ({
 	tag = "p",
 	...props
 }) => {
@@ -13,3 +14,5 @@ export const PanelHeading: React.FC<PanelHeading<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const PanelHeading = withHelpersModifiers(__PanelHeading);

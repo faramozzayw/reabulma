@@ -3,13 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getActiveModifiers } from "../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface NavbarBurger<T>
+export interface NavbarBurgerProps<T>
 	extends Bulma.Tag,
 		Bulma.Active,
 		React.HTMLProps<T> {}
 
-export const NavbarBurger: React.FC<NavbarBurger<HTMLElement>> = ({
+const __NavbarBurger: React.FC<NavbarBurgerProps<HTMLElement>> = ({
 	tag = "div",
 	isActive,
 	...props
@@ -30,3 +31,5 @@ export const NavbarBurger: React.FC<NavbarBurger<HTMLElement>> = ({
 		React.createElement("span", { "aria-hidden": true }),
 	);
 };
+
+export const NavbarBurger = withHelpersModifiers(__NavbarBurger);

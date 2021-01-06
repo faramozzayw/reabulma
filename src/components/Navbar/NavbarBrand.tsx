@@ -2,10 +2,11 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface NavbarBrand<T> extends Bulma.Tag, React.HTMLProps<T> {}
+export interface NavbarBrandProps<T> extends Bulma.Tag, React.HTMLProps<T> {}
 
-export const NavbarBrand: React.FC<NavbarBrand<HTMLElement>> = ({
+const __NavbarBrand: React.FC<NavbarBrandProps<HTMLElement>> = ({
 	tag = "div",
 	...props
 }) => {
@@ -16,3 +17,5 @@ export const NavbarBrand: React.FC<NavbarBrand<HTMLElement>> = ({
 		className,
 	});
 };
+
+export const NavbarBrand = withHelpersModifiers(__NavbarBrand);

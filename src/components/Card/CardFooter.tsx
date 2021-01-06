@@ -2,10 +2,11 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface CardFooter<T> extends Bulma.Tag, React.HTMLProps<T> {}
+export interface CardFooterProps<T> extends Bulma.Tag, React.HTMLProps<T> {}
 
-export const CardFooter: React.FC<CardFooter<HTMLElement>> = ({
+const __CardFooter: React.FC<CardFooterProps<HTMLElement>> = ({
 	tag = "footer",
 	...props
 }) => {
@@ -13,3 +14,5 @@ export const CardFooter: React.FC<CardFooter<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const CardFooter = withHelpersModifiers(__CardFooter);

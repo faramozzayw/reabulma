@@ -9,13 +9,13 @@ import {
 } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface Image
+export interface ImageProps
 	extends Bulma.Rounded,
 		Bulma.ImageSize,
 		Bulma.ImageRatio,
 		React.HTMLProps<HTMLImageElement> {}
 
-const __Image: React.FC<Image> = ({
+const __Image: React.FC<ImageProps> = ({
 	src,
 	isRounded,
 	isSize,

@@ -5,11 +5,14 @@ import { Bulma } from "./../bulma";
 import { getHeadingModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface Title<T> extends Bulma.Tag, Bulma.Heading, React.HTMLProps<T> {
+export interface TitleProps<T>
+	extends Bulma.Tag,
+		Bulma.Heading,
+		React.HTMLProps<T> {
 	isSubtitle?: boolean;
 }
 
-const __Title: React.FC<Title<HTMLElement>> = ({
+const __Title: React.FC<TitleProps<HTMLElement>> = ({
 	tag = "h1",
 	isSize,
 	isSpaced,

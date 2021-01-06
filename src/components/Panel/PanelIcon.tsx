@@ -1,10 +1,11 @@
 import React from "react";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface PanelIcon<T> extends React.HTMLProps<T> {
+export interface PanelIconProps<T> extends React.HTMLProps<T> {
 	icon: string;
 }
 
-export const PanelIcon: React.FC<PanelIcon<HTMLElement>> = ({
+const __PanelIcon: React.FC<PanelIconProps<HTMLElement>> = ({
 	children,
 	icon,
 	...props
@@ -13,3 +14,5 @@ export const PanelIcon: React.FC<PanelIcon<HTMLElement>> = ({
 		<i className={`${icon}`} aria-hidden="true"></i>
 	</span>
 );
+
+export const PanelIcon = withHelpersModifiers(__PanelIcon);

@@ -3,6 +3,7 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getAlignmentModifiers, getSizeModifiers } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export interface TabsProps<T>
 	extends Bulma.Alignment,
@@ -15,7 +16,7 @@ export interface TabsProps<T>
 	isToggleRounded?: boolean;
 }
 
-export const Tabs: React.FC<TabsProps<HTMLElement>> = ({
+const __Tabs: React.FC<TabsProps<HTMLElement>> = ({
 	tag = "div",
 	isAlign,
 	isSize,
@@ -40,3 +41,5 @@ export const Tabs: React.FC<TabsProps<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Tabs = withHelpersModifiers(__Tabs);
