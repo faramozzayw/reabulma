@@ -9,6 +9,7 @@ import {
 	getRoundedModifiers,
 	getStateModifiers,
 } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface SelectProps<T = HTMLSelectElement>
 	extends Bulma.Color,
@@ -18,7 +19,7 @@ export interface SelectProps<T = HTMLSelectElement>
 		Bulma.Rounded,
 		React.HTMLProps<T> {}
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+const __Select = forwardRef<HTMLSelectElement, SelectProps>(
 	(
 		{ isSize, isColor, isLoading, isRounded, isState, children, ...props },
 		ref,
@@ -39,10 +40,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
 		return (
 			<div className={wrapperClassname}>
-				<select {...(props as React.Props<HTMLSelectElement>)} ref={ref}>
+				<select {...(props as React.HTMLProps<HTMLSelectElement>)} ref={ref}>
 					{children}
 				</select>
 			</div>
 		);
 	},
 );
+
+export const Select = withHelpersModifiers(__Select);

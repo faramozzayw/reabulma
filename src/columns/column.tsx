@@ -3,6 +3,7 @@ import classnames from "classnames";
 
 import { Bulma } from "./../bulma";
 import { getSizeModifiers } from "./utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface ColumnProps<T = HTMLElement>
 	extends Bulma.Tag,
@@ -10,7 +11,7 @@ export interface ColumnProps<T = HTMLElement>
 		Bulma.Columns.Offset,
 		React.HTMLProps<T> {}
 
-export const Column: React.FC<ColumnProps> = ({
+const __Column: React.FC<ColumnProps> = ({
 	tag = "div",
 	isOffset,
 	isSize,
@@ -27,3 +28,5 @@ export const Column: React.FC<ColumnProps> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Column = withHelpersModifiers(__Column);

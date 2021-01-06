@@ -9,6 +9,7 @@ import {
 	getRoundedModifiers,
 	getStateModifiers,
 } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface InputProps<T = HTMLInputElement>
 	extends Bulma.Color,
@@ -18,7 +19,7 @@ export interface InputProps<T = HTMLInputElement>
 		Bulma.Static,
 		React.HTMLProps<T> {}
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
+const __Input = forwardRef<HTMLInputElement, InputProps>(
 	(
 		{ isSize, isColor, isStatic, isRounded, isState, children, ...props },
 		ref,
@@ -47,3 +48,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 		);
 	},
 );
+
+export const Input = withHelpersModifiers(__Input);

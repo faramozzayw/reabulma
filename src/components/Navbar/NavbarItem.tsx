@@ -3,8 +3,9 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getActiveModifiers } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface NavbarItem<T>
+export interface NavbarItemProps<T>
 	extends Bulma.Tag,
 		Bulma.Active,
 		React.HTMLProps<T> {
@@ -13,7 +14,7 @@ export interface NavbarItem<T>
 	dropdownUp?: boolean;
 }
 
-export const NavbarItem: React.FC<NavbarItem<HTMLElement>> = ({
+const __NavbarItem: React.FC<NavbarItemProps<HTMLElement>> = ({
 	tag = "div",
 	isHoverable,
 	hasDropdown,
@@ -39,3 +40,5 @@ export const NavbarItem: React.FC<NavbarItem<HTMLElement>> = ({
 		className,
 	});
 };
+
+export const NavbarItem = withHelpersModifiers(__NavbarItem);

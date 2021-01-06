@@ -3,7 +3,7 @@ import type { Story, Meta } from "@storybook/react/types-6-0";
 
 import { Title } from "../../src/index";
 
-import type { Title as TitleProps } from "../../src/elements/title";
+import type { TitleProps } from "../../src/elements/title";
 
 export default {
 	title: "Example/Elements/Title",

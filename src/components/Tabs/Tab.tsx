@@ -3,13 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "../../bulma";
 import { getActiveModifiers } from "../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export interface TabProps<T>
 	extends Bulma.Tag,
 		Bulma.Active,
 		React.HTMLProps<T> {}
 
-export const Tab: React.FC<TabProps<HTMLElement>> = ({
+const __Tab: React.FC<TabProps<HTMLElement>> = ({
 	tag = "li",
 	isActive,
 	...props
@@ -23,3 +24,5 @@ export const Tab: React.FC<TabProps<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Tab = withHelpersModifiers(__Tab);

@@ -3,13 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "../bulma";
 import { getSizeModifiers } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface FieldLabelProps<T>
 	extends Bulma.Tag,
 		Bulma.Size,
 		React.HTMLProps<T> {}
 
-export const FieldLabel: React.FC<FieldLabelProps<HTMLElement>> = ({
+const __FieldLabel: React.FC<FieldLabelProps<HTMLElement>> = ({
 	tag = "div",
 	isSize,
 	...props
@@ -24,3 +25,5 @@ export const FieldLabel: React.FC<FieldLabelProps<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const FieldLabel = withHelpersModifiers(__FieldLabel);

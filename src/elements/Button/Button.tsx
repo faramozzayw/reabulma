@@ -8,6 +8,7 @@ import {
 	getStateModifiers,
 	getLoadingModifiers,
 } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export interface ButtonProps<T>
 	extends Bulma.Color,
@@ -29,7 +30,7 @@ export type ButtonType = React.FC<
 	ButtonProps<HTMLButtonElement | HTMLAnchorElement>
 >;
 
-export const Button: ButtonType = ({
+const __Button: ButtonType = ({
 	isLink,
 	isOutlined,
 	isInverted,
@@ -82,3 +83,5 @@ export const Button: ButtonType = ({
 		/>
 	);
 };
+
+export const Button = withHelpersModifiers(__Button);

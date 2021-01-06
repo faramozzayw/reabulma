@@ -1,11 +1,13 @@
 import { Bulma } from "./bulma";
 
+export * from "./typography";
+export * from "./visibility";
+
 export type Modifier = { [k: string]: boolean };
-export type Props<K> = { [key: string]: K };
-export type ModifierFunction = (props: Props<any>) => Modifier;
+export type ModifierFunction<T = unknown> = (props: T) => Modifier;
 
 export function combineModifiers(
-	props: Props<any>,
+	props: any,
 	...args: ModifierFunction[]
 ): Object {
 	return args.length > 0
@@ -16,8 +18,9 @@ export function combineModifiers(
 /**
  * The function returns a function for the modifier.
  *
- * @param {T} T - the type parameter that is used for the field type
- * @param {string} key - field name
+ * @param T - the type parameter that is used for the field type
+ * @param key - field name
+ * @param options
  *
  * # Example
  * ```ts
@@ -30,19 +33,26 @@ export function combineModifiers(
  * ```
  *
  */
-export function getModifiersCreator<T>(key: string): ModifierFunction {
-	return (props: Props<Partial<T>>): Modifier => {
+export function getModifiersCreator<T, K extends keyof T = any>(
+	key: string,
+	options?: {
+		prefix?: string;
+	},
+): ModifierFunction<Pick<T, K>> {
+	return (props) => {
 		const modifier = props[key];
 		const hasModifier = Boolean(modifier);
+		const prefix = options?.prefix ?? "is";
 
-		return { [`is-${modifier}`]: hasModifier };
+		return { [`${prefix}-${modifier}`]: hasModifier };
 	};
 }
 
 export const getColorModifiers = getModifiersCreator<Bulma.Colors>("isColor");
-export const getAlignmentModifiers = getModifiersCreator<Bulma.Align>(
-	"isAlign",
-);
+export const getAlignmentModifiers = getModifiersCreator<
+	Bulma.Alignment,
+	"isAlign"
+>("isAlign");
 export const getSizeModifiers = getModifiersCreator<Bulma.Sizes>("isSize");
 export const getStateModifiers = getModifiersCreator<Bulma.States>("isState");
 
@@ -81,7 +91,7 @@ export const getLinkModifiers: ModifierFunction = ({ isLink }: Bulma.Link) => {
 	return { [`is-link`]: isLink };
 };
 
-export const getHeadingModifiers = ({
+export const getHeadingModifiers: ModifierFunction = ({
 	isSize: size,
 	isSpaced,
 }: Bulma.Heading) => {
@@ -92,3 +102,70 @@ export const getHeadingModifiers = ({
 		"is-spaced": isSpaced,
 	};
 };
+
+/* Helpers modifiers */
+
+export const getSpacingModifiers: ModifierFunction<Bulma.Helpers.Spacing> = ({
+	spacing,
+}) => {
+	if (!spacing) return {};
+
+	return Object.fromEntries(spacing.map((item) => [item, Boolean(item)]));
+};
+
+export const getAlignContentModifiers = getModifiersCreator<
+	Bulma.Helpers.Flexbox,
+	"alignContent"
+>("alignContent", {
+	prefix: "is-align-content",
+});
+
+export const getAlignItemsModifiers = getModifiersCreator<
+	Bulma.Helpers.Flexbox,
+	"alignItems"
+>("alignItems", {
+	prefix: "is-align-items",
+});
+
+export const getJustifyContentModifiers = getModifiersCreator<
+	Bulma.Helpers.Flexbox,
+	"justifyContent"
+>("justifyContent", {
+	prefix: "is-justify-content",
+});
+
+export const getFlexDirectionModifiers = getModifiersCreator<
+	Bulma.Helpers.Flexbox,
+	"direction"
+>("direction", {
+	prefix: "is-flex",
+});
+
+export const getWrapModifiers = getModifiersCreator<
+	Bulma.Helpers.Flexbox,
+	"wrap"
+>("wrap", {
+	prefix: "is-flex-wrap",
+});
+
+export const getFlexboxModifiers = (flexbox: Bulma.Helpers.Flexbox) => ({
+	...getAlignContentModifiers({ alignContent: flexbox?.alignContent }),
+	...getAlignItemsModifiers({ alignItems: flexbox?.alignItems }),
+	...getJustifyContentModifiers({ justifyContent: flexbox?.justifyContent }),
+	...getWrapModifiers({ wrap: flexbox?.wrap }),
+	...getFlexDirectionModifiers({ direction: flexbox?.direction }),
+});
+
+export const getTextColorModifiers = getModifiersCreator<
+	Bulma.Helpers.TextColor,
+	"hasTextColor"
+>("hasTextColor", {
+	prefix: "has-text",
+});
+
+export const getBackgroundColorModifiers = getModifiersCreator<
+	Bulma.Helpers.BackgroundColor,
+	"hasBackgroundColor"
+>("hasBackgroundColor", {
+	prefix: "has-background",
+});

@@ -3,8 +3,9 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getColorModifiers, getSizeModifiers } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface Hero<T>
+export interface HeroProps<T>
 	extends Bulma.Size,
 		Bulma.Tag,
 		Bulma.Color,
@@ -14,7 +15,7 @@ export interface Hero<T>
 	isHalfHeight?: boolean;
 }
 
-export const Hero: React.FC<Hero<HTMLElement>> = ({
+const __Hero: React.FC<HeroProps<HTMLElement>> = ({
 	tag = "section",
 	isColor,
 	isSize,
@@ -37,3 +38,5 @@ export const Hero: React.FC<Hero<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Hero = withHelpersModifiers(__Hero);

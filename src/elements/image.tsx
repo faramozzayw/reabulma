@@ -7,14 +7,15 @@ import {
 	getImageRatioModifiers,
 	getImageSizeModifiers,
 } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface Image
+export interface ImageProps
 	extends Bulma.Rounded,
 		Bulma.ImageSize,
 		Bulma.ImageRatio,
 		React.HTMLProps<HTMLImageElement> {}
 
-export const Image: React.FC<Image> = ({
+const __Image: React.FC<ImageProps> = ({
 	src,
 	isRounded,
 	isSize,
@@ -40,3 +41,5 @@ export const Image: React.FC<Image> = ({
 		</figure>
 	);
 };
+
+export const Image = withHelpersModifiers(__Image);

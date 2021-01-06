@@ -3,14 +3,18 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getColorModifiers } from "../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface Navbar<T> extends Bulma.Tag, Bulma.Color, React.HTMLProps<T> {
+export interface NavbarProps<T>
+	extends Bulma.Tag,
+		Bulma.Color,
+		React.HTMLProps<T> {
 	isTransparent?: boolean;
 	isFixedTop?: boolean;
 	isFixedBottom?: boolean;
 }
 
-export const Navbar: React.FC<Navbar<HTMLElement>> = ({
+const __Navbar: React.FC<NavbarProps<HTMLElement>> = ({
 	tag = "nav",
 	isTransparent,
 	isColor,
@@ -31,3 +35,5 @@ export const Navbar: React.FC<Navbar<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Navbar = withHelpersModifiers(__Navbar);

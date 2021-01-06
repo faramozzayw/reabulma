@@ -2,10 +2,13 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface ModalBackground<T> extends Bulma.Tag, React.HTMLProps<T> {}
+export interface ModalBackgroundProps<T>
+	extends Bulma.Tag,
+		React.HTMLProps<T> {}
 
-export const ModalBackground: React.FC<ModalBackground<HTMLElement>> = ({
+const __ModalBackground: React.FC<ModalBackgroundProps<HTMLElement>> = ({
 	tag = "div",
 	...props
 }) => {
@@ -13,3 +16,5 @@ export const ModalBackground: React.FC<ModalBackground<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const ModalBackground = withHelpersModifiers(__ModalBackground);

@@ -2,6 +2,7 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "../bulma";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface FieldProps<T = HTMLElement>
 	extends Bulma.Tag,
@@ -13,7 +14,7 @@ export interface FieldProps<T = HTMLElement>
 	hasAddons?: boolean;
 }
 
-export const Field: React.FC<FieldProps> = ({
+const __Field: React.FC<FieldProps> = ({
 	tag = "div",
 	isHorizontal,
 	isGrouped,
@@ -37,3 +38,5 @@ export const Field: React.FC<FieldProps> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Field = withHelpersModifiers(__Field);

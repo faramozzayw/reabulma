@@ -3,13 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getActiveModifiers } from "../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface NavbarLink<T>
+export interface NavbarLinkProps<T>
 	extends Bulma.Tag,
 		Bulma.Active,
 		React.HTMLProps<T> {}
 
-export const NavbarLink: React.FC<NavbarLink<HTMLElement>> = ({
+const __NavbarLink: React.FC<NavbarLinkProps<HTMLElement>> = ({
 	tag = "a",
 	isActive,
 	...props
@@ -24,3 +25,5 @@ export const NavbarLink: React.FC<NavbarLink<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const NavbarLink = withHelpersModifiers(__NavbarLink);

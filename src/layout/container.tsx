@@ -2,10 +2,11 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "../bulma";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface ContainerProps<T> extends Bulma.Tag, React.HTMLProps<T> {}
 
-export const Container: React.FC<ContainerProps<HTMLElement>> = ({
+export const __Container: React.FC<ContainerProps<HTMLElement>> = ({
 	tag = "div",
 	...props
 }) => {
@@ -13,3 +14,5 @@ export const Container: React.FC<ContainerProps<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Container = withHelpersModifiers(__Container);

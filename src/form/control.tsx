@@ -3,6 +3,7 @@ import classnames from "classnames";
 
 import { Bulma } from "./../bulma";
 import { getLoadingModifiers } from "../utils";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface ControlProps<T>
 	extends Bulma.Tag,
@@ -13,7 +14,7 @@ export interface ControlProps<T>
 	hasIconsRight?: boolean;
 }
 
-export const Control = ({
+const __Control = ({
 	tag = "div",
 	isExpanded,
 	hasIconsLeft,
@@ -34,3 +35,5 @@ export const Control = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Control = withHelpersModifiers(__Control);

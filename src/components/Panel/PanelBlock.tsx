@@ -3,13 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getActiveModifiers } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface PanelBlock<T>
+export interface PanelBlockProps<T>
 	extends Bulma.Tag,
 		Bulma.Active,
 		React.HTMLProps<T> {}
 
-export const PanelBlock: React.FC<PanelBlock<HTMLElement>> = ({
+const __PanelBlock: React.FC<PanelBlockProps<HTMLElement>> = ({
 	tag = "a",
 	isActive,
 	...props
@@ -24,3 +25,5 @@ export const PanelBlock: React.FC<PanelBlock<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const PanelBlock = withHelpersModifiers(__PanelBlock);

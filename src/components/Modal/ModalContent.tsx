@@ -2,10 +2,11 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface ModalContent<T> extends Bulma.Tag, React.HTMLProps<T> {}
+export interface ModalContentProps<T> extends Bulma.Tag, React.HTMLProps<T> {}
 
-export const ModalContent: React.FC<ModalContent<HTMLElement>> = ({
+const __ModalContent: React.FC<ModalContentProps<HTMLElement>> = ({
 	tag = "div",
 	...props
 }) => {
@@ -13,3 +14,5 @@ export const ModalContent: React.FC<ModalContent<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const ModalContent = withHelpersModifiers(__ModalContent);

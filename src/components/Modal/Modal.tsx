@@ -3,10 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getActiveModifiers } from "../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface Modal<T> extends Bulma.Tag, Bulma.Active, React.HTMLProps<T> {}
+export interface ModalProps<T>
+	extends Bulma.Tag,
+		Bulma.Active,
+		React.HTMLProps<T> {}
 
-export const Modal: React.FC<Modal<HTMLElement>> = ({
+const __Modal: React.FC<ModalProps<HTMLElement>> = ({
 	tag = "div",
 	isActive,
 	...props
@@ -21,3 +25,5 @@ export const Modal: React.FC<Modal<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Modal = withHelpersModifiers(__Modal);

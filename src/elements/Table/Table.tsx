@@ -1,6 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import { Bulma } from "../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export interface TableProps
 	extends Bulma.FullWidth,
@@ -11,7 +12,7 @@ export interface TableProps
 	isHoverable?: boolean;
 }
 
-export const Table: React.FC<TableProps> = ({
+const __Table: React.FC<TableProps> = ({
 	children,
 	isBordered,
 	isStriped,
@@ -38,3 +39,5 @@ export const Table: React.FC<TableProps> = ({
 		</table>
 	);
 };
+
+export const Table = withHelpersModifiers(__Table);

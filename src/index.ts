@@ -1,5 +1,8 @@
 export type { Bulma } from "./bulma";
 
+// utils
+export { withHelpersModifiers } from "./withHelpersModifiers";
+
 // layout
 export { Hero, HeroBody, HeroHeader, HeroFooter } from "./layout/Hero/index";
 export { Tile } from "./layout/Tile";

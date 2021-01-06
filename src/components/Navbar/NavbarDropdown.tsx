@@ -2,12 +2,13 @@ import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface NavbarDropdown<T> extends Bulma.Tag, React.HTMLProps<T> {
+export interface NavbarDropdownProps<T> extends Bulma.Tag, React.HTMLProps<T> {
 	isBoxed?: boolean;
 }
 
-export const NavbarDropdown: React.FC<NavbarDropdown<HTMLElement>> = ({
+const __NavbarDropdown: React.FC<NavbarDropdownProps<HTMLElement>> = ({
 	tag = "div",
 	isBoxed,
 	...props
@@ -25,3 +26,5 @@ export const NavbarDropdown: React.FC<NavbarDropdown<HTMLElement>> = ({
 		className,
 	});
 };
+
+export const NavbarDropdown = withHelpersModifiers(__NavbarDropdown);

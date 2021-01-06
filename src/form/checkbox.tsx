@@ -1,10 +1,11 @@
 import React, { forwardRef } from "react";
 import classnames from "classnames";
+import { withHelpersModifiers } from "../withHelpersModifiers";
 
 export interface CheckboxProps<T = HTMLInputElement>
 	extends React.HTMLProps<T> {}
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+const __Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 	({ children, ...props }, ref) => {
 		const wrapperClassNames = classnames("checkbox", props.className);
 
@@ -20,3 +21,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 		);
 	},
 );
+
+export const Checkbox = withHelpersModifiers(__Checkbox);

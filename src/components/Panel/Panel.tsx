@@ -3,10 +3,14 @@ import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
 import { getColorModifiers } from "./../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface Panel<T> extends Bulma.Tag, Bulma.Color, React.HTMLProps<T> {}
+export interface PanelProps<T>
+	extends Bulma.Tag,
+		Bulma.Color,
+		React.HTMLProps<T> {}
 
-export const Panel: React.FC<Panel<HTMLElement>> = ({
+const __Panel: React.FC<PanelProps<HTMLElement>> = ({
 	tag = "nav",
 	isColor,
 	...props
@@ -21,3 +25,5 @@ export const Panel: React.FC<Panel<HTMLElement>> = ({
 
 	return React.createElement(tag, { ...props, className });
 };
+
+export const Panel = withHelpersModifiers(__Panel);
