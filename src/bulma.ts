@@ -33,8 +33,8 @@ export declare namespace Bulma {
 	}
 
 	export type Sizes = "small" | "normal" | "medium" | "large";
-	export interface Size {
-		isSize?: Sizes;
+	export interface Size<Useless = never> {
+		isSize?: Exclude<Sizes, Useless>;
 	}
 
 	export interface Tag {
@@ -63,8 +63,8 @@ export declare namespace Bulma {
 
 	export type Align = "left" | "centered" | "right";
 
-	export interface Alignment {
-		isAlign?: Align;
+	export interface Alignment<Useless = never> {
+		isAlign?: Exclude<Align, Useless>;
 	}
 
 	export interface Active {
