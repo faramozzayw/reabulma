@@ -78,3 +78,11 @@ export { Tabs } from "./components/Tabs/Tabs";
 export { Tab } from "./components/Tabs/Tab";
 
 export { Breadcrumb, BreadcrumbItem } from "./components/Breadcrumb/index";
+export {
+	Dropdown,
+	DropdownTrigger,
+	DropdownMenu,
+	DropdownContent,
+	DropdownItem,
+	DropdownDivider,
+} from "./components/Dropdown/index";

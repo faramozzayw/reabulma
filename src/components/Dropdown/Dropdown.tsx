@@ -1,24 +1,34 @@
 import React from "react";
 import classnames from "classnames";
 
-import { Bulma } from "./../../bulma";
+import { Bulma } from "../../bulma";
 import { getActiveModifiers } from "../../utils";
 import { withHelpersModifiers } from "../../withHelpersModifiers";
 
-export interface NavbarMenuProps<T>
+export interface DropdownProps<T = HTMLElement>
 	extends Bulma.Tag,
 		Bulma.Active,
-		React.HTMLProps<T> {}
+		React.HTMLProps<T> {
+	isUp?: boolean;
+	isRight?: boolean;
+	isHoverable?: boolean;
+}
 
-const __NavbarMenu: React.FC<NavbarMenuProps<HTMLElement>> = ({
+const __Dropdown: React.FC<DropdownProps> = ({
 	tag = "div",
 	isActive,
+	isUp,
+	isRight,
+	isHoverable,
 	...props
 }) => {
 	const className = classnames(
-		"navbar-menu",
+		"dropdown",
 		{
 			...getActiveModifiers({ isActive }),
+			"is-up": isUp,
+			"is-right": isRight,
+			"is-hoverable": isHoverable,
 		},
 		props.className,
 	);
@@ -26,4 +36,4 @@ const __NavbarMenu: React.FC<NavbarMenuProps<HTMLElement>> = ({
 	return React.createElement(tag, { ...props, className });
 };
 
-export const NavbarMenu = withHelpersModifiers(__NavbarMenu);
+export const Dropdown = withHelpersModifiers(__Dropdown);
