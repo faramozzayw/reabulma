@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dropdown renders correctly 1`] = `
+<body>
+  <div>
+    <nav
+      class="pagination is-centered"
+    />
+  </div>
+</body>
+`;

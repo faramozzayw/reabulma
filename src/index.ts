@@ -86,3 +86,10 @@ export {
 	DropdownItem,
 	DropdownDivider,
 } from "./components/Dropdown/index";
+export {
+	Pagination,
+	PageList,
+	PageEllipsis,
+	PagеLink,
+	PagеControl,
+} from "./components/Pagination/index";
