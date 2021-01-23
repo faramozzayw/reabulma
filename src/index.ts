@@ -93,3 +93,8 @@ export {
 	PagеLink,
 	PagеControl,
 } from "./components/Pagination/index";
+export {
+	Message,
+	MessageBody,
+	MessageHeader,
+} from "./components/Message/index";
