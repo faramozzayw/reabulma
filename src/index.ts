@@ -98,3 +98,4 @@ export {
 	MessageBody,
 	MessageHeader,
 } from "./components/Message/index";
+export { Menu, MenuLabel, MenuList, MenuLink } from "./components/Menu/index";
