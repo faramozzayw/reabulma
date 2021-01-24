@@ -16,13 +16,15 @@ const __MenuLink: React.FC<MenuLinkProps> = ({
 	...props
 }) => {
 	const className = classnames(
+		"dropdown-item",
 		{
 			...getActiveModifiers({ isActive }),
 		},
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	const itemTag = props?.href ? "a" : tag;
+	return React.createElement(itemTag, { ...props, className });
 };
 
 export const MenuLink = withHelpersModifiers(__MenuLink);
