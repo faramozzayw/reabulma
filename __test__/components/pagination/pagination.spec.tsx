@@ -46,6 +46,6 @@ describe("dropdown", () => {
 		);
 
 		expect(getByTestId(/rounded/)).toHaveClass("is-rounded");
-		expect(getByTestId(/large/)).not.toHaveClass("is-rounded");
+		expect(getByTestId(/notRounded/)).not.toHaveClass("is-rounded");
 	});
 });
