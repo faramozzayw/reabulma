@@ -7,6 +7,15 @@ export { withHelpersModifiers } from "./withHelpersModifiers";
 export { Hero, HeroBody, HeroHeader, HeroFooter } from "./layout/Hero/index";
 export { Tile } from "./layout/Tile";
 export { Container } from "./layout/container";
+export { Section } from "./layout/section";
+export { Footer } from "./layout/footer";
+export {
+	Media,
+	MediaLeft,
+	MediaRight,
+	MediaContent,
+} from "./layout/Media/index";
+export { Level, LevelItem, LevelLeft, LevelRight } from "./layout/Level/index";
 
 // columns
 export { Columns } from "./columns/columns";

@@ -33,7 +33,7 @@ export declare namespace Bulma {
 	}
 
 	export type Sizes = "small" | "normal" | "medium" | "large";
-	export interface Size<Useless = never> {
+	export interface Size<Useless extends Sizes = never> {
 		isSize?: Exclude<Sizes, Useless>;
 	}
 
