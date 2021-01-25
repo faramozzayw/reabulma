@@ -45,7 +45,7 @@ export { Checkbox } from "./form/checkbox";
 export { Help } from "./form/help";
 // forms / field
 export { Field } from "./form/field";
-export { FieldLabel } from "./form/FieldLabel";
+export { FieldLabel, FieldBody } from "./form/general/index";
 
 // components
 export {

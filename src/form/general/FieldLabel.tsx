@@ -1,9 +1,9 @@
 import React from "react";
 import classnames from "classnames";
 
-import { Bulma } from "../bulma";
-import { getSizeModifiers } from "../utils";
-import { withHelpersModifiers } from "../withHelpersModifiers";
+import { Bulma } from "../../bulma";
+import { getSizeModifiers } from "../../utils";
+import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export interface FieldLabelProps<T>
 	extends Bulma.Tag,
