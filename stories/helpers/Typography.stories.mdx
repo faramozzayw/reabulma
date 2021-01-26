@@ -1,0 +1,160 @@
+## Typography <small>[Bulma reference]()</small>
+
+### Size:
+
+> There are **7 sizes** to choose from
+>
+> You can choose a **specific** size for each viewport width. You simply need to append the **viewport width** to the size modifier
+
+#### Property: `typography`
+
+#### Example
+
+```tsx
+<WithHelper
+	typography={{
+		size: {
+			fullhd: 1,
+			mobile: 3,
+			touch: 4,
+		},
+	}}
+/>
+```
+
+### Alignment
+
+> You can align the text with the use of one of **4 alignment helpers**
+
+#### Example
+
+```tsx
+<WithHelper typography={{ align: "justified" }}>
+	justified
+</WithHelper>
+<WithHelper typography={{ align: "left" }}>
+	left
+</WithHelper>
+<WithHelper typography={{ align: "centered" }}>
+	centered
+</WithHelper>
+<WithHelper typography={{ align: "right" }}>
+	right
+</WithHelper>
+```
+
+### Responsive Alignment
+
+> You can **align text** differently for each **viewport width**. Simply append the **viewport width** to the alignment modifier.
+
+#### Example:
+
+```tsx
+<WithHelper
+	typography={{
+		align: {
+			default: ["justified", true], // `true` equal to `only` from `has-text-left-tablet-only`
+		}}}>
+	justified
+</WithHelper>
+<WithHelper
+	typography={{
+		align: {
+			touch: "left",
+		}}}>
+	left
+</WithHelper>
+<WithHelper
+	typography={{
+		align: {
+			fullhd: ["centered", true],
+		}}}>
+	centered
+</WithHelper>
+<WithHelper
+	typography={{
+		align: {
+			widescreen: "right",
+		}}}>
+	right
+</WithHelper>
+```
+
+### Text transformation
+
+> You can transform the text with the use of one of **4 text transformation helpers**
+
+#### Values: `capitalized`, `lowercase`, `uppercase`, `italic`
+
+#### Example:
+
+#### Example
+
+```tsx
+<WithHelper
+	typography={{
+		transformation: "lowercase",
+	}}>
+	lowercase
+</WithHelper>
+<WithHelper
+	typography={{
+		transformation: "capitalized",
+	}}>
+	capitalized
+</WithHelper>
+```
+
+### Text weight
+
+> You can transform the text weight with the use of one of **5 text weight helpers**
+
+#### Values: `light`, `normal`, `medium`, `semibold`, `bold`
+
+#### Example
+
+```tsx
+<WithHelper
+	typography={{
+		weight: "semibold",
+	}}>
+	semibold
+</WithHelper>
+<WithHelper
+	typography={{
+		weight: "light",
+	}}>
+	light
+</WithHelper>
+<WithHelper
+	typography={{
+		weight: "medium",
+	}}>
+	medium
+</WithHelper>
+```
+
+### Font family
+
+> You can change the font family with the use of one of **5 font family helpers**
+
+#### Values: `sans-serif`, `monospace`, `primary`, `secondary`, `code`
+
+#### Example:
+
+```tsx
+<WithHelper
+	typography={{
+		family: "monospace",
+	}}>
+	monospace
+</WithHelper>
+<WithHelper
+	typography={{
+		family: "code",
+	}}>
+	code
+</WithHelper>
+```
+
+#### Values: `light`, `normal`, `medium`, `semibold`, `bold`
