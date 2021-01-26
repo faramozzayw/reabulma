@@ -28,8 +28,8 @@ export declare namespace Bulma {
 		| "white-ter"
 		| "white-bis";
 
-	export interface Color {
-		isColor?: Colors;
+	export interface Color<Useless extends Colors = never> {
+		isColor?: Exclude<Colors, Useless>;
 	}
 
 	export type Sizes = "small" | "normal" | "medium" | "large";
@@ -61,9 +61,13 @@ export declare namespace Bulma {
 		isLink?: boolean;
 	}
 
+	export interface Boxed {
+		isBoxed?: boolean;
+	}
+
 	export type Align = "left" | "centered" | "right";
 
-	export interface Alignment<Useless = never> {
+	export interface Alignment<Useless extends Align = never> {
 		isAlign?: Exclude<Align, Useless>;
 	}
 

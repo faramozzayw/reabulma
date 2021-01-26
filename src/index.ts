@@ -46,6 +46,7 @@ export { Help } from "./form/help";
 // forms / field
 export { Field } from "./form/field";
 export { FieldLabel, FieldBody } from "./form/general/index";
+export { File } from "./form/file";
 
 // components
 export {
