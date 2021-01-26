@@ -14,7 +14,7 @@ import { Meta } from "@storybook/addon-docs/blocks";
     .subheading {
         --mediumdark: '#999999';
         font-weight: 900;
-        font-size: 13px;
+        font-size: 1rem;
         color: #999;
         letter-spacing: 6px;
         line-height: 24px;
@@ -49,20 +49,22 @@ import { Meta } from "@storybook/addon-docs/blocks";
     .link-item {
         display: block;
         padding: 20px 30px 20px 15px;
-        border: 1px solid #00000010;
+        border: 2px solid #000;
         border-radius: 5px;
         transition: background 150ms ease-out, border 150ms ease-out, transform 150ms ease-out;
         color: #333333;
         display: flex;
         align-items: flex-start;
+        box-shadow: 2px 2px black;
         color: white;
     }
 
     .link-item:hover {
         color: white;
-        border-color: #1EA7FD50;
+        border-color: #3298dc;
         transform: translate3d(0, -3px, 0);
         box-shadow: rgba(0, 0, 0, 0.08) 0 3px 10px 0;
+        box-shadow: 2px 2px #3298dc;
     }
 
     .link-item:active {
