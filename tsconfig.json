@@ -6,7 +6,8 @@
 		"outDir": "./lib",
 		"jsx": "react",
 		"esModuleInterop": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"sourceMap": true
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "**/*.(spec|stories).(ts|tsx)"]

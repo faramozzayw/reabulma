@@ -19,7 +19,8 @@
 		"storybook": "start-storybook -p 6006",
 		"build-storybook": "build-storybook",
 		"test": "jest",
-		"test:watch": "jest --watch"
+		"test:watch": "jest --watch",
+		"build": "tsc"
 	},
 	"files": [
 		"lib/"
