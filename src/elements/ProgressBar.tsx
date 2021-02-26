@@ -29,14 +29,14 @@ const __ProgressBar: React.FC<ProgressBarProps> = ({
 
 	if (!value) {
 		return (
-			<progress className={classNames} max={max} {...props}>
+			<progress {...props} className={classNames} max={max}>
 				{children}
 			</progress>
 		);
 	}
 
 	return (
-		<progress className={classNames} value={value} max={max} {...props}>
+		<progress {...props} className={classNames} value={value} max={max}>
 			{children ?? value}
 		</progress>
 	);

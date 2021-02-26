@@ -34,7 +34,7 @@ const __Table: React.FC<TableProps> = ({
 	);
 
 	return (
-		<table className={className} {...props}>
+		<table {...props} className={className}>
 			{children}
 		</table>
 	);

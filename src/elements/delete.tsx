@@ -39,9 +39,9 @@ const __Delete: React.FC<
 
 	return (
 		<button
+			{...(props as React.HTMLProps<HTMLButtonElement>)}
 			type={type as any}
 			className={className}
-			{...(props as React.HTMLProps<HTMLButtonElement>)}
 		/>
 	);
 };

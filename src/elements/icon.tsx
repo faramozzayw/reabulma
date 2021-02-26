@@ -21,14 +21,14 @@ const __Icon: React.FC<IconProps> = ({ isSize, icon, ...props }) => {
 	if (typeof icon === "string") {
 		const imgClassname = classnames(icon, {});
 		return (
-			<span className={className} {...props}>
+			<span {...props} className={className}>
 				<i className={imgClassname} aria-hidden="true"></i>
 			</span>
 		);
 	}
 
 	return (
-		<span className={className} {...props}>
+		<span {...props} className={className}>
 			{icon}
 		</span>
 	);

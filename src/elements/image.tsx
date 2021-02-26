@@ -36,7 +36,7 @@ const __Image: React.FC<ImageProps> = ({
 	});
 
 	return (
-		<figure className={className} {...props}>
+		<figure {...props} className={className}>
 			<img src={src} className={imgClassname} />
 		</figure>
 	);
