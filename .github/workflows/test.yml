@@ -2,9 +2,9 @@ name: Node.js
 
 on:
   push:
-    branches: [hugs]
+    branches: [main]
   pull_request:
-    branches: [hugs]
+    branches: [main]
 
 jobs:
   build:
