@@ -24,10 +24,10 @@ const __Delete: React.FC<
 	if (href) {
 		return (
 			<a
+				{...(props as React.HTMLProps<HTMLAnchorElement>)}
 				href={href}
 				role="button"
 				className={className}
-				{...(props as React.HTMLProps<HTMLAnchorElement>)}
 			/>
 		);
 	}
@@ -39,9 +39,9 @@ const __Delete: React.FC<
 
 	return (
 		<button
+			{...(props as React.HTMLProps<HTMLButtonElement>)}
 			type={type as any}
 			className={className}
-			{...(props as React.HTMLProps<HTMLButtonElement>)}
 		/>
 	);
 };

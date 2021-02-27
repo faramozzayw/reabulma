@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`breadcrumb renders correctly 1`] = `
+<body>
+  <div>
+    <button
+      class="delete"
+      type="button"
+    />
+  </div>
+</body>
+`;
