@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image renders correctly 1`] = `
+<body>
+  <div>
+    <figure
+      class="image"
+    >
+      <img
+        class=""
+      />
+    </figure>
+  </div>
+</body>
+`;
