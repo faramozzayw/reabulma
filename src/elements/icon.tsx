@@ -1,15 +1,15 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps } from "react";
 
 import { Bulma } from "../bulma";
 import { getSizeModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface IconProps extends Bulma.Size, React.HTMLProps<HTMLElement> {
+export interface IconProps extends Bulma.Size, HTMLProps<HTMLElement> {
 	icon?: string | JSX.Element;
 }
 
-const __Icon: React.FC<IconProps> = ({ isSize, icon, ...props }) => {
+const __Icon: FC<IconProps> = ({ isSize, icon, ...props }) => {
 	const className = classnames(
 		"icon",
 		{

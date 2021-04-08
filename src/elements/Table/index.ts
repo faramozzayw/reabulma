@@ -1,2 +1,2 @@
-export { TableContainer } from "./TableContainer";
 export { Table } from "./Table";
+export { TableContainer } from "./TableContainer";

@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement, forwardRef } from "react";
 
 import { Bulma } from "../bulma";
 import {
@@ -15,41 +15,39 @@ export interface FileProps<T = HTMLInputElement>
 		Bulma.Color<"text">,
 		Bulma.Size<"normal">,
 		Bulma.Alignment,
-		React.HTMLProps<T> {
+		HTMLProps<T> {
 	hasName?: boolean;
 	fileLabel?: string;
 	fileName?: string;
 	icon?: string;
 }
 
-const FileIcon: React.FC<Pick<FileProps, "icon">> = ({ icon }) => (
+const FileIcon: FC<Pick<FileProps, "icon">> = ({ icon }) => (
 	<span className="file-icon">
 		<i className={icon}></i>
 	</span>
 );
 
-interface FileLabelProps<T = HTMLElement>
-	extends Bulma.Tag,
-		React.HTMLProps<T> {}
+interface FileLabelProps<T = HTMLElement> extends Bulma.Tag, HTMLProps<T> {}
 
-const FileLabel: React.FC<FileLabelProps> = ({ tag = "label", ...props }) => {
+const FileLabel: FC<FileLabelProps> = ({ tag = "label", ...props }) => {
 	const className = classnames("file-label", props.className);
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
-interface FileCTAProps<T = HTMLElement> extends Bulma.Tag, React.HTMLProps<T> {}
+interface FileCTAProps<T = HTMLElement> extends Bulma.Tag, HTMLProps<T> {}
 
-const FileCTA: React.FC<FileCTAProps> = ({ tag = "span", ...props }) => {
+const FileCTA: FC<FileCTAProps> = ({ tag = "span", ...props }) => {
 	const className = classnames("file-cta", props.className);
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
-const FileName: React.FC<Pick<FileProps, "fileName">> = ({ fileName }) =>
+const FileName: FC<Pick<FileProps, "fileName">> = ({ fileName }) =>
 	Boolean(fileName?.trim()) ? (
 		<span className="file-name">{fileName}</span>
 	) : null;
 
-const __File: React.FC<FileProps> = forwardRef<HTMLInputElement, FileProps>(
+const __File: FC<FileProps> = forwardRef<HTMLInputElement, FileProps>(
 	(
 		{
 			isBoxed,

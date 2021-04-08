@@ -1,22 +1,19 @@
-import React from "react";
+import { FC, HTMLProps, createElement } from "react";
 import classnames from "classnames";
 
 import { Bulma } from "../bulma";
-import { getSizeModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface IconTextProps
-	extends Bulma.Tag,
-		React.HTMLProps<HTMLElement> {}
+export interface IconTextProps extends Bulma.Tag, HTMLProps<HTMLElement> {}
 
-const __IconText: React.FC<IconTextProps> = ({
+const __IconText: FC<IconTextProps> = ({
 	tag = "span",
 	children,
 	...props
 }) => {
 	const className = classnames("icon-text", props.className);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const IconText = withHelpersModifiers(__IconText);

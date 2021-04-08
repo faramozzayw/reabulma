@@ -1,5 +1,5 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "../bulma";
 import { getColorModifiers } from "../utils";
@@ -9,9 +9,9 @@ export interface NotificationProps<T>
 	extends Bulma.Tag,
 		Bulma.Color,
 		Bulma.Light,
-		React.HTMLProps<T> {}
+		HTMLProps<T> {}
 
-const __Notification: React.FC<NotificationProps<HTMLElement>> = ({
+const __Notification: FC<NotificationProps<HTMLElement>> = ({
 	tag = "div",
 	isColor,
 	isLight,
@@ -26,9 +26,7 @@ const __Notification: React.FC<NotificationProps<HTMLElement>> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Notification = withHelpersModifiers(__Notification);
-
-<Notification isClearFix />;

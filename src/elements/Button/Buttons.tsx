@@ -1,8 +1,8 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "./../../bulma";
-import { getSizeModifiers, getAlignmentModifiers } from "./../../utils";
+import { getAlignmentModifiers } from "./../../utils";
 import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export type ButtonsSizes = "small" | "medium" | "large";
@@ -11,13 +11,16 @@ export interface ButtonsProps<T>
 	extends Bulma.Tag,
 		/* Bulma.Size, */
 		Bulma.Alignment,
-		React.HTMLProps<T> {
+		HTMLProps<T> {
 	hasAddons?: boolean;
 }
 
-const __Buttons: React.FC<
-	ButtonsProps<HTMLButtonElement | HTMLAnchorElement>
-> = ({ tag = "div", /* isSize, */ isAlign, hasAddons, ...props }) => {
+const __Buttons: FC<ButtonsProps<HTMLButtonElement | HTMLAnchorElement>> = ({
+	tag = "div",
+	/* isSize, */ isAlign,
+	hasAddons,
+	...props
+}) => {
 	const className = classnames(
 		"buttons",
 		{
@@ -28,7 +31,7 @@ const __Buttons: React.FC<
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Buttons = withHelpersModifiers(__Buttons);

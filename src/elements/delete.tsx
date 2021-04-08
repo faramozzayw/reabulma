@@ -1,18 +1,18 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, ButtonHTMLAttributes } from "react";
 
 import { Bulma } from "../bulma";
 import { getSizeModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface DeleteProps<T>
-	extends Bulma.Tag,
-		Bulma.Size,
-		React.HTMLProps<T> {}
+export interface DeleteProps<T> extends Bulma.Tag, Bulma.Size, HTMLProps<T> {}
 
-const __Delete: React.FC<
-	DeleteProps<HTMLButtonElement | HTMLAnchorElement>
-> = ({ tag = "a", href, isSize, ...props }) => {
+const __Delete: FC<DeleteProps<HTMLButtonElement | HTMLAnchorElement>> = ({
+	tag = "a",
+	href,
+	isSize,
+	...props
+}) => {
 	const className = classnames(
 		"delete",
 		{
@@ -24,7 +24,7 @@ const __Delete: React.FC<
 	if (href) {
 		return (
 			<a
-				{...(props as React.HTMLProps<HTMLAnchorElement>)}
+				{...(props as HTMLProps<HTMLAnchorElement>)}
 				href={href}
 				role="button"
 				className={className}
@@ -33,13 +33,13 @@ const __Delete: React.FC<
 	}
 
 	const type = (props.type ?? "button") as Pick<
-		React.ButtonHTMLAttributes<HTMLButtonElement>,
+		ButtonHTMLAttributes<HTMLButtonElement>,
 		"type"
 	>;
 
 	return (
 		<button
-			{...(props as React.HTMLProps<HTMLButtonElement>)}
+			{...(props as HTMLProps<HTMLButtonElement>)}
 			type={type as any}
 			className={className}
 		/>

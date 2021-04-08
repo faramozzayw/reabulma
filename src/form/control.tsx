@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, HTMLProps, createElement } from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../bulma";
@@ -8,7 +8,7 @@ import { withHelpersModifiers } from "../withHelpersModifiers";
 export interface ControlProps<T>
 	extends Bulma.Tag,
 		Bulma.Loading,
-		React.HTMLProps<T> {
+		HTMLProps<T> {
 	isExpanded?: boolean;
 	hasIconsLeft?: boolean;
 	hasIconsRight?: boolean;
@@ -33,7 +33,7 @@ const __Control = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Control = withHelpersModifiers(__Control);

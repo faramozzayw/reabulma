@@ -1,13 +1,13 @@
-import React from "react";
+import type { FC, HTMLProps } from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../bulma";
 import { getSizeModifiers } from "./../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface LabelProps<T> extends Bulma.Size, React.HTMLProps<T> {}
+export interface LabelProps<T> extends Bulma.Size, HTMLProps<T> {}
 
-const __Label: React.FC<LabelProps<HTMLElement>> = ({ isSize, ...props }) => {
+const __Label: FC<LabelProps<HTMLElement>> = ({ isSize, ...props }) => {
 	const className = classnames(
 		"label",
 		{
@@ -17,10 +17,7 @@ const __Label: React.FC<LabelProps<HTMLElement>> = ({ isSize, ...props }) => {
 	);
 
 	return (
-		<label
-			{...(props as React.Props<HTMLLabelElement>)}
-			className={className}
-		/>
+		<label {...(props as HTMLProps<HTMLLabelElement>)} className={className} />
 	);
 };
 

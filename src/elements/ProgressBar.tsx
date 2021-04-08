@@ -1,5 +1,5 @@
-import React from "react";
 import classnames from "classnames";
+import type { FC, HTMLProps } from "react";
 
 import { Bulma } from "./../bulma";
 import { getColorModifiers, getSizeModifiers } from "../utils";
@@ -8,9 +8,9 @@ import { withHelpersModifiers } from "../withHelpersModifiers";
 export interface ProgressBarProps
 	extends Bulma.Size,
 		Bulma.Color,
-		React.HTMLProps<HTMLProgressElement> {}
+		HTMLProps<HTMLProgressElement> {}
 
-const __ProgressBar: React.FC<ProgressBarProps> = ({
+const __ProgressBar: FC<ProgressBarProps> = ({
 	max = "100",
 	children,
 	value,
