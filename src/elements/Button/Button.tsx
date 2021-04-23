@@ -1,4 +1,3 @@
-import React from "react";
 import classnames from "classnames";
 
 import { Bulma } from "./../../bulma";
@@ -20,6 +19,7 @@ export interface ButtonProps<T>
 		Bulma.FullWidth,
 		React.HTMLProps<T> {
 	isLink?: boolean;
+	isGhost?: boolean;
 	isOutlined?: boolean;
 	isInverted?: boolean;
 	isStatic?: boolean;
@@ -42,6 +42,7 @@ const __Button: ButtonType = ({
 	isLoading,
 	isState,
 	isFullWidth,
+	isGhost,
 	type,
 	...props
 }) => {
@@ -55,7 +56,7 @@ const __Button: ButtonType = ({
 			"is-light": isLight,
 			"is-rounded": isRounded,
 			"is-fullwidth": isFullWidth,
-			...getColorModifiers({ isColor }),
+			...getColorModifiers({ isColor: isGhost ? "ghost" : isColor }),
 			...getSizeModifiers({ isSize }),
 			...getStateModifiers({ isState }),
 			...getLoadingModifiers({ isLoading }),

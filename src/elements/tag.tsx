@@ -1,5 +1,5 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "./../bulma";
 import {
@@ -18,9 +18,9 @@ export interface TagProps<T>
 		Bulma.Light,
 		Bulma.Link,
 		Bulma.Rounded,
-		React.HTMLProps<T> {}
+		HTMLProps<T> {}
 
-const __Tag: React.FC<TagProps<HTMLElement>> = ({
+const __Tag: FC<TagProps<HTMLElement>> = ({
 	tag = "span",
 	isSize,
 	isColor,
@@ -41,7 +41,7 @@ const __Tag: React.FC<TagProps<HTMLElement>> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Tag = withHelpersModifiers(__Tag);

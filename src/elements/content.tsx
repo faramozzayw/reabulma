@@ -1,16 +1,13 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "./../bulma";
 import { getSizeModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface ContentProps<T>
-	extends Bulma.Size,
-		Bulma.Tag,
-		React.HTMLProps<T> {}
+export interface ContentProps<T> extends Bulma.Size, Bulma.Tag, HTMLProps<T> {}
 
-const __Content: React.FC<ContentProps<HTMLElement>> = ({
+const __Content: FC<ContentProps<HTMLElement>> = ({
 	tag = "div",
 	isSize,
 	...props
@@ -23,7 +20,7 @@ const __Content: React.FC<ContentProps<HTMLElement>> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Content = withHelpersModifiers(__Content);

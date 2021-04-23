@@ -55,3 +55,9 @@ Large.args = {
 	children: "Button text",
 	isColor: "primary",
 };
+
+export const Ghost = Template.bind({});
+Ghost.args = {
+	isGhost: true,
+	children: "Ghost",
+};

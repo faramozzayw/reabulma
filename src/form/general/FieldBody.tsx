@@ -1,17 +1,17 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "../../bulma";
 import { withHelpersModifiers } from "../../withHelpersModifiers";
 
 export interface FieldBodyProps<T = HTMLElement>
 	extends Bulma.Tag,
-		React.HTMLProps<T> {}
+		HTMLProps<T> {}
 
-const __FieldBody: React.FC<FieldBodyProps> = ({ tag = "div", ...props }) => {
+const __FieldBody: FC<FieldBodyProps> = ({ tag = "div", ...props }) => {
 	const className = classnames("field-body", props.className);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const FieldBody = withHelpersModifiers(__FieldBody);

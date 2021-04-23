@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, HTMLProps, createElement } from "react";
 import classnames from "classnames";
 
 import { Bulma } from "../../bulma";
@@ -8,9 +8,9 @@ import { withHelpersModifiers } from "../../withHelpersModifiers";
 export interface FieldLabelProps<T>
 	extends Bulma.Tag,
 		Bulma.Size,
-		React.HTMLProps<T> {}
+		HTMLProps<T> {}
 
-const __FieldLabel: React.FC<FieldLabelProps<HTMLElement>> = ({
+const __FieldLabel: FC<FieldLabelProps<HTMLElement>> = ({
 	tag = "div",
 	isSize,
 	...props
@@ -23,7 +23,7 @@ const __FieldLabel: React.FC<FieldLabelProps<HTMLElement>> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const FieldLabel = withHelpersModifiers(__FieldLabel);

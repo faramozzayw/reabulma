@@ -1,5 +1,5 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "../bulma";
 import { withHelpersModifiers } from "../withHelpersModifiers";
@@ -7,14 +7,14 @@ import { withHelpersModifiers } from "../withHelpersModifiers";
 export interface FieldProps<T = HTMLElement>
 	extends Bulma.Tag,
 		Bulma.Alignment,
-		React.HTMLProps<T> {
+		HTMLProps<T> {
 	isHorizontal?: boolean;
 	isGrouped?: boolean;
 	multiline?: boolean;
 	hasAddons?: boolean;
 }
 
-const __Field: React.FC<FieldProps> = ({
+const __Field: FC<FieldProps> = ({
 	tag = "div",
 	isHorizontal,
 	isGrouped,
@@ -36,7 +36,7 @@ const __Field: React.FC<FieldProps> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Field = withHelpersModifiers(__Field);

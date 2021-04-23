@@ -1,12 +1,10 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "./../bulma";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface ColumnsProps<T = HTMLElement>
-	extends Bulma.Tag,
-		React.HTMLProps<T> {
+export interface ColumnsProps<T = HTMLElement> extends Bulma.Tag, HTMLProps<T> {
 	isDesktop?: boolean;
 	isMobile?: boolean;
 	isGapless?: boolean;
@@ -15,7 +13,7 @@ export interface ColumnsProps<T = HTMLElement>
 	multiline?: boolean;
 }
 
-const __Columns: React.FC<ColumnsProps> = ({
+const __Columns: FC<ColumnsProps> = ({
 	tag = "div",
 	isDesktop,
 	isMobile,
@@ -38,7 +36,7 @@ const __Columns: React.FC<ColumnsProps> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Columns = withHelpersModifiers(__Columns);

@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
 import classnames from "classnames";
+import { HTMLProps, forwardRef } from "react";
 
 import { Bulma } from "./../bulma";
 import {
@@ -13,7 +13,7 @@ export interface TextAreaProps<T = HTMLTextAreaElement>
 	extends Bulma.Color,
 		Bulma.Size,
 		Bulma.State,
-		React.HTMLProps<T> {
+		HTMLProps<T> {
 	hasFixedSize?: boolean;
 }
 
@@ -32,7 +32,7 @@ const __TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
 		return (
 			<textarea
-				{...(props as React.HTMLProps<HTMLTextAreaElement>)}
+				{...(props as HTMLProps<HTMLTextAreaElement>)}
 				ref={ref}
 				className={className}
 			/>

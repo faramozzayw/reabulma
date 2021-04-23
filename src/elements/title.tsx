@@ -1,18 +1,15 @@
-import React from "react";
 import classnames from "classnames";
+import { FC, HTMLProps, createElement } from "react";
 
 import { Bulma } from "./../bulma";
 import { getHeadingModifiers } from "../utils";
 import { withHelpersModifiers } from "../withHelpersModifiers";
 
-export interface TitleProps<T>
-	extends Bulma.Tag,
-		Bulma.Heading,
-		React.HTMLProps<T> {
+export interface TitleProps<T> extends Bulma.Tag, Bulma.Heading, HTMLProps<T> {
 	isSubtitle?: boolean;
 }
 
-const __Title: React.FC<TitleProps<HTMLElement>> = ({
+const __Title: FC<TitleProps<HTMLElement>> = ({
 	tag = "h1",
 	isSize,
 	isSpaced,
@@ -32,7 +29,7 @@ const __Title: React.FC<TitleProps<HTMLElement>> = ({
 		props.className,
 	);
 
-	return React.createElement(tag, { ...props, className });
+	return createElement(tag, { ...props, className });
 };
 
 export const Title = withHelpersModifiers(__Title);

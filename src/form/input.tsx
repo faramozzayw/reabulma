@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
 import classnames from "classnames";
+import { HTMLProps, forwardRef } from "react";
 
 import { Bulma } from "./../bulma";
 import {
@@ -17,7 +17,7 @@ export interface InputProps<T = HTMLInputElement>
 		Bulma.State,
 		Bulma.Rounded,
 		Bulma.Static,
-		React.HTMLProps<T> {}
+		HTMLProps<T> {}
 
 const __Input = forwardRef<HTMLInputElement, InputProps>(
 	(

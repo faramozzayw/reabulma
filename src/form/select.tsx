@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
 import classnames from "classnames";
+import { HTMLProps, forwardRef } from "react";
 
 import { Bulma } from "./../bulma";
 import {
@@ -17,7 +17,7 @@ export interface SelectProps<T = HTMLSelectElement>
 		Bulma.Loading,
 		Bulma.State,
 		Bulma.Rounded,
-		React.HTMLProps<T> {}
+		HTMLProps<T> {}
 
 const __Select = forwardRef<HTMLSelectElement, SelectProps>(
 	(
@@ -40,7 +40,7 @@ const __Select = forwardRef<HTMLSelectElement, SelectProps>(
 
 		return (
 			<div className={wrapperClassname}>
-				<select {...(props as React.HTMLProps<HTMLSelectElement>)} ref={ref}>
+				<select {...(props as HTMLProps<HTMLSelectElement>)} ref={ref}>
 					{children}
 				</select>
 			</div>
