@@ -77,26 +77,3 @@ export function withHelpersModifiers<T>(Component: React.ComponentType<T>) {
 
 	return WrappedComponent;
 }
-
-/*
-export function withHelpersModifiers<P extends object>(
-	Component: React.ComponentType<P>,
-) {
-	return class extends React.Component<P & BulmaHelpers & React.HTMLProps<HTMLElement>> {
-		static displayName = `WithHelpers(${getDisplayName(Component)})`;
-
-		render() {
-			const { flexbox, ...props } = this.props;
-
-			const className = classNames(
-				{
-					...getFlexboxModifiers(flexbox),
-				},
-				props.className,
-			);
-
-			return <Component {...props as P} className={className} />;
-		}
-	};
-}
-*/
