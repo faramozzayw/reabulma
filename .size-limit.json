@@ -1,7 +1,6 @@
 [
 	{
-		"path": "index.js",
-		"import": "{ withHelpersModifiers }",
+		"path": "lib/index.js",
 		"limit": "3 kB"
 	}
 ]
