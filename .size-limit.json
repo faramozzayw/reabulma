@@ -1,0 +1,7 @@
+[
+	{
+		"path": "index.js",
+		"import": "{ withHelpersModifiers }",
+		"limit": "3 kB"
+	}
+]

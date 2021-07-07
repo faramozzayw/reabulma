@@ -65,6 +65,7 @@
 		"pretty-quick": "^3.0.2",
 		"react-is": "^16.13.1",
 		"react-test-renderer": "^17.0.1",
+		"size-limit": "^5.0.1",
 		"ts-node": "^9.1.1",
 		"typescript": "^4.1.2"
 	},
