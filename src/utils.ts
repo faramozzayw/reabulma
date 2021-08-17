@@ -138,7 +138,7 @@ export const getFlexDirectionModifiers = getModifiersCreator<
 	Bulma.Helpers.Flexbox,
 	"direction"
 >("direction", {
-	prefix: "is-flex",
+	prefix: "is-flex-direction",
 });
 
 export const getWrapModifiers = getModifiersCreator<

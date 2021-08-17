@@ -1,3 +1,9 @@
+## 0.2.4 (August 17, 2021)
+
+### Fixed:
+
+- properties for `flexbox` had the wrong prefix, so it just didn't work
+
 ## 0.1.1 (February 27, 2021)
 
 ### Fixed:
