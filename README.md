@@ -49,3 +49,9 @@ ReactDOM.render(
 	document.getElementById("root"),
 );
 ```
+
+### FAQ
+
+### `SyntaxError: Unexpected token 'export'`
+Try to modify the webpack config in `next.config.js` file to let the babel loader transpile the es6 dependency. You may want to use this package [next-transpile-modules](https://github.com/martpie/next-transpile-modules#readme)
+
