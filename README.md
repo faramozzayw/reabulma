@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="./icon.png" width="500px" height="150px" />
+</p>
+
+
 # Reabulma
 
 A set of React components for Bulma
