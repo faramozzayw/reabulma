@@ -31,13 +31,18 @@ This library uses features like destructuring assignment, `for..of` and `const/l
 Using npm
 
 ```sh
-npm i @faramo.zayw/reabulma
+npm i @faramo.zayw/reabulma bulma
 ```
 
 Using yarn
 
 ```sh
-yarn add @faramo.zayw/reabulma
+yarn add @faramo.zayw/reabulma bulma
+```
+
+And by adding the following to your index.js:
+```js
+import 'bulma/css/bulma.css';
 ```
 
 ## Usage
