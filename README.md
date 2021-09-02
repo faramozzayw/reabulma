@@ -5,7 +5,7 @@
 
 # Reabulma
 
-A set of React components for Bulma
+Lightweight React wrapper for Bulma, full TypeScript support, no commonjs, no complex extra features, no bunch of dependencies. Just you, bulma and types.
 
 ![](https://badgen.net/bundlephobia/min/@faramo.zayw/reabulma)
 ![](https://badgen.net/npm/v/@faramo.zayw/reabulma)
@@ -17,6 +17,7 @@ Here is a short list of most important features that `@faramo.zayw/reabulma` has
 - 🚀 Minimum dependencies
 - 🔨 Types out of the box
 - 🔥 Storybook docs
+- 📦 no commonjs, only ES2020
 
 ## Supporting IE11 and obsolete platforms
 
